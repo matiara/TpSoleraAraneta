@@ -1,11 +1,12 @@
-package com.company;
+package main;
 import clasesextra.Bronze;
 import clasesextra.Gold;
 import clasesextra.Silver;
-import com.company.Reserva;
+import com.company.Empresa;
+import com.company.Motor;
+import com.company.Usuario;
+import reserva.Reserva;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -29,7 +30,7 @@ public class Main {
 
         ///CREANDO AVIONES
         ///--------------Bronce
-        Bronze bronze1 = new Bronze(1000,150,3,400,Motor.reaccion);
+        Bronze bronze1 = new Bronze(1000,150,3,400, Motor.reaccion);
         Bronze bronze2 = new Bronze(1100,150,3,400,Motor.reaccion);
         ///--------------Silver
         Silver silver1 = new Silver(1250,200,5,500,Motor.helice);

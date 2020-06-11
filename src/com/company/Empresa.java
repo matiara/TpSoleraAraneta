@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.TipoAvion;
+import com.company.Usuario;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
