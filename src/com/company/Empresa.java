@@ -2,12 +2,13 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
+
 
 public class Empresa {
     private String nombre;
     private HashMap<Integer, Usuario> mapUsuarios;
     private ArrayList<TipoAvion> listaAviones;
+
 
     public Empresa(String nombre){
         this.nombre = nombre;
