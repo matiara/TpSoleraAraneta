@@ -15,7 +15,6 @@ public class Main {
     public static void main(String[] args) {
 
         /// CREANDO EMPRESA
-
         System.out.println("Empresa");
 
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
@@ -98,7 +97,6 @@ public class Main {
                                     break;
 
                                 case 2:
-                                    reserva.mostrarLugares();
 
                                     int origen = reserva.selecOrigen();
                                     int destino = reserva.selecDestino();
@@ -141,3 +139,4 @@ public class Main {
         }
     }
 }
+
