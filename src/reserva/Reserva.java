@@ -56,8 +56,6 @@ public class Reserva {
     //2) SELECCIONAR DESTINO Y ORIGEN.
 
 
-    /// PROBANDO
-
     public int selecOrigen(){
         mostrarLugares();
         int valorOrigen=0;
