@@ -46,6 +46,8 @@ public class Reserva {
         return costoTotal;
     }
 
+    ///---------------------------------------------------------------------------
+
     public void mostrarLugares(){
         System.out.println("Lugares: ");
         System.out.println("Nº1 Buenos Aires");
@@ -58,8 +60,8 @@ public class Reserva {
 
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
-    //2) SELECCIONAR DESTINO Y ORIGEN.
 
+    //2) SELECCIONAR DESTINO Y ORIGEN.
 
     public int selecOrigen(){
         mostrarLugares();
@@ -105,6 +107,46 @@ public class Reserva {
 
 
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
+
+    public void selecAvion(){
+        /// los aviones se muestran en el main. Ahi esta el metodo.
+        int selecAvion=0;
+        int check=0;
+
+        while(check==0){
+            System.out.println("Seleccione el avion que desea");
+            selecAvion = reader.nextInt();
+            check = 1;
+
+            if(selecAvion <0){
+                System.out.println("Numero invalido");
+                check=0;
+            }
+            if(selecAvion >5){
+                System.out.println("El maximo es 5");
+                check=0;
+            }
+
+            System.out.println("ustede selecciono el avion Nº: " + selecAvion);
+            /// validaciones en condicion de cantidad de pasajeros en total.
+
+
+
+        }
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
     //5) MOSTRAR COSTO TOTAL.
 
     public int obtenerDistancia(){

@@ -22,9 +22,7 @@ public class Main {
 
 
         ///CREANDO RESERVA
-
         Reserva reserva = new Reserva(0,null,null, 0,0,0);
-
 
 
         ///CREANDO AVIONES
@@ -81,10 +79,10 @@ public class Main {
                     case 2:
                         while(!salir){
                             System.out.println("1 | OPCION");
-                            System.out.println("2 | Seleccionar Origen");
+                            System.out.println("2 | Seleccionar Origen-Destino");
                             System.out.println("3 | Cantidad Acompañantes");
-                            System.out.println("4 | OPCION");
-                            System.out.println("5 | OPCION");
+                            System.out.println("4 | Seleccionar Avion");
+                            System.out.println("5 | Costo Total");
                             System.out.println("6 | Salir");
 
                             System.out.println("Ingrese una opcion: ");
@@ -105,6 +103,10 @@ public class Main {
                                         System.out.println("El destino y el origen no pueden ser iguales");
                                     }
 
+                                    if(origen == 1){
+
+                                    }
+
                                     System.out.println("Usted quiere salir desde : " + origen + "hacia :" + destino);
 
 
@@ -117,11 +119,17 @@ public class Main {
 
 
                                 case 4:
-                                    System.out.println("ESTE ES EL SUBMENU PARTE 4");
+                                    System.out.println("Seleccionar avion");
+                                    empresa.mostrarArregloAviones();
+                                    reserva.selecAvion();
+
+
                                     break;
 
                                 case 5:
-                                    System.out.println("ESTE ES EL SUBMENU PARTE 5");
+                                    System.out.println("Obteniendo distancia");
+                                    int distancia = reserva.obtenerDistancia();
+                                    System.out.println("" + distancia);
                                     break;
 
                                 case 6:
