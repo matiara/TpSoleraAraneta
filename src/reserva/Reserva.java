@@ -11,6 +11,8 @@ public class Reserva {
     private int cantAcompañantes;
     private int selecAvion;
     private float costoTotal;
+    private ArrayList<Usuario> pasajeros;
+
 
     public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal){
         this.fecha = fecha;
@@ -19,6 +21,8 @@ public class Reserva {
         this.cantAcompañantes = cantAcompañantes;
         this.selecAvion = selecAvion;
         this.costoTotal = costoTotal;
+        this.pasajeros = new ArrayList<Usuario>();
+
     }
 
     Scanner reader = new Scanner(System.in);
@@ -77,12 +81,61 @@ public class Reserva {
     }
 
 
-
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
     //5) MOSTRAR COSTO TOTAL.
 
+    public int obtenerDistancia(){
+       //-1 si no existe destino.
+
+        int distancia = 0;
+
+        if(origen.equals(Lugares.BuenoAires)){
+            if(destino.equals(Lugares.Cordoba))
+                distancia = 695;
+            if(destino.equals(Lugares.Santiago))
+                distancia = 1400;
+            if(destino.equals(Lugares.Montevideo))
+                distancia = 950;
+            else
+                distancia = -1;
+        }
+        else if(origen.equals(Lugares.Cordoba)){
+            if(destino.equals(Lugares.Montevideo))
+                distancia = 1190;
+            if(destino.equals(Lugares.Santiago))
+                distancia = 1050;
+        }
+        else if(origen.equals(Lugares.Montevideo)){
+            if(destino.equals(Lugares.Santiago))
+                distancia = 2100;
+            else
+                distancia = -1;
+        }
+        else if(origen.equals(Lugares.Santiago)){
+            distancia = -1;
+        }
+
+        return distancia;
+    }
 
 
 
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "fecha=" + fecha +
+                ", origen=" + origen +
+                ", destino=" + destino +
+                ", cantAcompañantes=" + cantAcompañantes +
+                ", selecAvion=" + selecAvion +
+                ", costoTotal=" + costoTotal +
+                ", pasajeros=" + pasajeros +
+                ", reader=" + reader +
+                '}';
+    }
+
+
+
+    ////funcion calcular costo 
 }
