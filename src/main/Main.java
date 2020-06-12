@@ -82,7 +82,7 @@ public class Main {
                         while(!salir){
                             System.out.println("1 | OPCION");
                             System.out.println("2 | Seleccionar Origen");
-                            System.out.println("3 | OPCION");
+                            System.out.println("3 | Cantidad Acompañantes");
                             System.out.println("4 | OPCION");
                             System.out.println("5 | OPCION");
                             System.out.println("6 | Salir");
@@ -111,8 +111,10 @@ public class Main {
                                     break;
 
                                 case 3:
-                                    System.out.println("ESTE ES EL SUBMENU PARTE 3");
+                                    reserva.putCantAcompañantes();
+                                    System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
                                     break;
+
 
                                 case 4:
                                     System.out.println("ESTE ES EL SUBMENU PARTE 4");

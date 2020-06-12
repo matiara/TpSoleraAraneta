@@ -1,5 +1,6 @@
 package reserva;
 
+import org.w3c.dom.ls.LSOutput;
 import reserva.Lugares;
 
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class Reserva {
     private int cantAcompañantes;
     private int selecAvion;
     private float costoTotal;
-    private ArrayList<Usuario> pasajeros;
+   // private ArrayList<Usuario> pasajeros; ///--------------------------> comente esta parte del codigo por que daba error.
 
 
     public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal){
@@ -21,7 +22,7 @@ public class Reserva {
         this.cantAcompañantes = cantAcompañantes;
         this.selecAvion = selecAvion;
         this.costoTotal = costoTotal;
-        this.pasajeros = new ArrayList<Usuario>();
+       // this.pasajeros = new ArrayList<Usuario>();
 
     }
 
@@ -80,6 +81,29 @@ public class Reserva {
 
 
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.
+    public void putCantAcompañantes(){
+        int check=0;
+
+        while(check==0){
+            System.out.println("Ingrese la cantidad de acompañantes");
+            this.cantAcompañantes = reader.nextInt();
+            check = 1;
+
+            if(cantAcompañantes < 0){
+                System.out.println("Numero invalido");
+                check=0;
+            }
+            if(cantAcompañantes > 7){
+                System.out.println("Numero, invalido, la cantidad maxima es 7");
+                check=0;
+            }
+
+        }
+
+
+    }
+
+
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
     //5) MOSTRAR COSTO TOTAL.
 
@@ -128,12 +152,14 @@ public class Reserva {
                 ", cantAcompañantes=" + cantAcompañantes +
                 ", selecAvion=" + selecAvion +
                 ", costoTotal=" + costoTotal +
-                ", pasajeros=" + pasajeros +
+                //", pasajeros=" + pasajeros +
                 ", reader=" + reader +
                 '}';
     }
 
 
 
-    ////funcion calcular costo 
+    ////funcion calcular costo
+
+    /// TENEMOS QUE HACER UNA FUNCION QUE MUESTRE TODOS LOS VALORES INGRESADOS EN LA RESERVA PARA QUE EL USUARIO LO CONFIRME.
 }
