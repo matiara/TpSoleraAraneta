@@ -6,13 +6,16 @@ import com.company.Empresa;
 import com.company.Motor;
 import com.company.Usuario;
 import reserva.Reserva;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+
+
+        // crear menu aparte
+
 
         /// CREANDO EMPRESA
         System.out.println("Empresa");
@@ -46,7 +49,6 @@ public class Main {
         empresa.agregarAvion(gold2);
 
         //empresa.mostrarArregloAviones();
-
 
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
@@ -95,7 +97,6 @@ public class Main {
                                     break;
 
                                 case 2:
-
                                     int origen = reserva.selecOrigen();
                                     int destino = reserva.selecDestino();
 
@@ -106,7 +107,6 @@ public class Main {
                                     if(origen == 1){
 
                                     }
-
                                     System.out.println("Usted quiere salir desde : " + origen + "hacia :" + destino);
 
 

@@ -12,6 +12,7 @@ public class Reserva {
     private int cantAcompañantes;
     private int selecAvion;
     private float costoTotal;
+
    // private ArrayList<Usuario> pasajeros; ///--------------------------> comente esta parte del codigo por que daba error.
 
 
