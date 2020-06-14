@@ -1,0 +1,33 @@
+{
+"usuarios":[
+    {
+    }
+  ],
+  "aviones": {
+    "gold": {
+      "fuelCapacity": 200,
+      "kmFee": 150,
+      "maxCapacity": 30,
+      "maxVelocity": 50,
+      "tipoPropulsion": "helice"
+    },
+    "silver": {
+      "fuelCapacity": 200,
+      "kmFee": 150,
+      "maxCapacity": 30,
+      "maxVelocity": 50,
+      "tipoPropulsion": "motor"
+    },
+    "bronze": {
+      "fuelCapacity": 200,
+      "kmFee": 150,
+      "maxCapacity": 30,
+      "maxVelocity": 50,
+      "tipoPropulsion": "pistones"
+    }
+  },
+  "reservas": [
+    {
+    }
+  ]
+}
