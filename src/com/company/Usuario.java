@@ -76,19 +76,6 @@ public class Usuario {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///------------------------- GETS AND SETS -----------------------------------------
     public String getNombre() {
         return nombre;

@@ -13,9 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        // crear menu aparte
-
+        // Crear menu aparte
 
         /// CREANDO EMPRESA
         System.out.println("Empresa");
@@ -55,6 +53,15 @@ public class Main {
         int opcion2=0;
         int opcion3=0;
         boolean salir = false;
+/*
+        System.out.println("MOSTRANDO");
+        reserva.toString();
+        reserva.toString();
+        reserva.pasarValores();
+        System.out.println("");
+        reserva.toString();
+*/
+
 
         while(!salir){
             System.out.println("1 | Registrarse");
@@ -85,7 +92,7 @@ public class Main {
                             System.out.println("3 | Cantidad Acompañantes");
                             System.out.println("4 | Seleccionar Avion");
                             System.out.println("5 | Costo Total");
-                            System.out.println("6 | Salir");
+                            System.out.println("6 | Pasar valores (Temporal)");
 
                             System.out.println("Ingrese una opcion: ");
                             opcion2 = scanner.nextInt();
@@ -127,17 +134,33 @@ public class Main {
                                     break;
 
                                 case 5:
+
+
                                     System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
+
                                     break;
 
                                 case 6:
+
+                                    reserva.pasarValores();
+
+                                    System.out.println("Mostrando la reserva");
+                                    System.out.println("Cantidad de acompañantes: "+reserva.getCantAcompañantes());
+                                    System.out.println("Avion elejido: " + reserva.getSelecAvion());
+
+
+                                    /// DESPUES QUEDA ESTE CODIGO
+                                    /*
                                     System.out.println("SALIR");
                                     salir = true;
                                     break;
+                                    */
+
                             }
                         }
+
                     default:
                         System.out.println("Las opciones son 1 o 2");
 
@@ -147,6 +170,14 @@ public class Main {
                 scanner.next();
             }
         }
+
+
     }
+
+
+
+
+
+
 }
 

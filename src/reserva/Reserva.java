@@ -1,8 +1,11 @@
 package reserva;
 
+import com.company.Empresa;
+import com.company.Usuario;
 import org.w3c.dom.ls.LSOutput;
 import reserva.Lugares;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reserva {
@@ -13,7 +16,6 @@ public class Reserva {
     private int selecAvion;
     private float costoTotal;
 
-   // private ArrayList<Usuario> pasajeros; ///--------------------------> comente esta parte del codigo por que daba error.
 
 
     public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal){
@@ -23,7 +25,6 @@ public class Reserva {
         this.cantAcompañantes = cantAcompañantes;
         this.selecAvion = selecAvion;
         this.costoTotal = costoTotal;
-       // this.pasajeros = new ArrayList<Usuario>();
 
     }
 
@@ -57,8 +58,6 @@ public class Reserva {
         System.out.println("Nº4 Montevideo");
     }
 
-
-
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
 
@@ -82,9 +81,8 @@ public class Reserva {
         return valorDestino;
     }
 
-
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.
-    public void putCantAcompañantes(){
+    public int putCantAcompañantes(){
         int check=0;
 
         while(check==0){
@@ -103,13 +101,12 @@ public class Reserva {
 
         }
 
-
+        return this.cantAcompañantes;
     }
-
 
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
 
-    public void selecAvion(){
+    public int selecAvion(){
         /// los aviones se muestran en el main. Ahi esta el metodo.
         int selecAvion=0;
         int check=0;
@@ -128,24 +125,12 @@ public class Reserva {
                 check=0;
             }
 
-            System.out.println("ustede selecciono el avion Nº: " + selecAvion);
+            System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
             /// validaciones en condicion de cantidad de pasajeros en total.
 
-
-
         }
-
-
-
-
-
-
+        return selecAvion;
     }
-
-
-
-
-
 
 
     //5) MOSTRAR COSTO TOTAL.
@@ -186,6 +171,7 @@ public class Reserva {
 
 
 
+
     @Override
     public String toString() {
         return "Reserva{" +
@@ -201,8 +187,20 @@ public class Reserva {
     }
 
 
+    /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
 
-    ////funcion calcular costo
+    /// LUEGO QUE PASE LOS VALORES A LOS THIS. (PASAR VALORES A RESERVA)
+    public void pasarValores(){
+        //this.origen = selecOrigen(); // DA ERROR POR QUE SELEC ORIGEN DEVUELVE UN INT. HACER TRANSFERENCIA INDICANDO QUE CIUDAD ES CADA INT.
+        //this.destino = selecDestino() // LO MISMO QUE ORIGEN.
+        this.cantAcompañantes = putCantAcompañantes();
+        this.selecAvion = selecAvion();
+    }
 
-    /// TENEMOS QUE HACER UNA FUNCION QUE MUESTRE TODOS LOS VALORES INGRESADOS EN LA RESERVA PARA QUE EL USUARIO LO CONFIRME.
+
+
+
+
+    ///funcion calcular costo
+
 }
