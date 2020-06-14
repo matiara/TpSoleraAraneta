@@ -17,7 +17,7 @@ public class Main {
 
         // Crear menu aparte
 
-        /// CREANDO EMPRESA
+        /// CREANDO EMPRES
         System.out.println("Empresa");
 
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
