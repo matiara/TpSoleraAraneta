@@ -96,99 +96,57 @@ public class Main {
                         salir = true;
                         break;
 
-                    case 2:
-                        while(!salir){
-                            System.out.println("1 | OPCION");
-                            System.out.println("2 | Seleccionar Origen-Destino");
-                            System.out.println("3 | Cantidad Acompañantes");
-                            System.out.println("4 | Seleccionar Avion");
-                            System.out.println("5 | Costo Total");
-                            System.out.println("6 | Pasar valores (Temporal)");
+                         case 2:
+                                    System.out.println("Ingrese los valores correspondientes para realizar la reserva");
 
-                            System.out.println("Ingrese una opcion: ");
-                            opcion2 = scanner.nextInt();
-
-                            switch (opcion2){
-
-                                case 1:
-                                    System.out.println("ESTE ES EL SUBMENU PARTE 1");
-                                    break;
-
-                                case 2:
+                                    ///------------------------------------ORIGEN DESTINO ------------------------------
+                                    System.out.println("Indique desde donde quiere partir...");
                                     int origen = reserva.selecOrigen();
+                                    System.out.println("Indique hacia donde quiere ir...");
                                     int destino = reserva.selecDestino();
 
                                     if(origen == destino){
                                         System.out.println("El destino y el origen no pueden ser iguales");
                                     }
 
-                                    if(origen == 1){
-
-                                    }
                                     System.out.println("Usted quiere salir desde : " + origen + "hacia :" + destino);
 
-
-                                    break;
-
-                                case 3:
+                                    ///-------------------------------CANT DE ACOMPAÑANTES----------------------------
+                                    System.out.println("Indique la cantidad de acompañantes que viajan con usted");
                                     reserva.putCantAcompañantes();
-                                    System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
-                                    break;
+                                    System.out.println("La cantidad de acompañantes que indico es: " + reserva.getCantAcompañantes());
 
-
-                                case 4:
-                                    System.out.println("Seleccionar avion");
+                                    ///-------------------------------SELECCIONAR AVION --------------------------------
+                                    System.out.println("Seleccione el avion que mejor se adapte a sus pretenciones de vuelo");
                                     empresa.mostrarArregloAviones();
                                     reserva.selecAvion();
-
-
-                                    break;
-
-                                case 5:
-
-
-                                    System.out.println("Obteniendo distancia");
+                                    ///-------------------------------OBTENER DISTANCIA (FALTA)-------------------------
+                             /*
+                             System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
-
-                                    break;
-
-                                case 6:
-
+                             */
+                                    ///------------------------------PASAR VALORES (PRUEBA)-----------------------------
+                             /*
                                     reserva.pasarValores();
-
                                     System.out.println("Mostrando la reserva");
                                     System.out.println("Cantidad de acompañantes: "+reserva.getCantAcompañantes());
                                     System.out.println("Avion elejido: " + reserva.getSelecAvion());
+                                */
+                             ///*********************************************************************************
 
-
-                                    /// DESPUES QUEDA ESTE CODIGO
-                                    /*
-                                    System.out.println("SALIR");
-                                    salir = true;
-                                    break;
-                                    */
+                        default:
+                            System.out.println("Las opciones son 1 o 2");
 
                             }
-                        }
-
-                    default:
-                        System.out.println("Las opciones son 1 o 2");
-
-                }
-            } catch(InputMismatchException ex) {
+                        } catch(InputMismatchException ex) {
                 System.err.println("Debes introducir un numero");
                 scanner.next();
+
+                }
             }
         }
-
-
     }
 
 
-
-
-
-
-}
 
