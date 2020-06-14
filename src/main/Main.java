@@ -6,6 +6,8 @@ import com.company.Empresa;
 import com.company.Motor;
 import com.company.Usuario;
 import reserva.Reserva;
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -21,9 +23,18 @@ public class Main {
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
         Scanner scanner = new Scanner(System.in);
 
+        Usuario usuario1 = new Usuario("Pepe","Rodriguez",41785749,29);
+        Usuario usuario2 = new Usuario("Kiko","ZonaSur",52657845,48);
 
         ///CREANDO RESERVA
         Reserva reserva = new Reserva(0,null,null, 0,0,0);
+
+        reserva.agregarUsuarios(usuario1);
+        reserva.agregarUsuarios(usuario2);
+        reserva.mostrarListaUsuarios();
+
+        empresa.generarReserva(usuario1,reserva);
+
 
 
         ///CREANDO AVIONES
@@ -77,8 +88,8 @@ public class Main {
 
                         /// PROBANDO DE CREAR UN USUARIO EN DONDE SE AGREGE A EMPRESA, Y SE LO MUESTRE.
 
-                        Usuario usuario1 = new Usuario("","",0,0);
-                        usuario1.crearUsuaruio();
+                        //Usuario usuario1 = new Usuario("","",0,0);
+                        //usuario1.crearUsuaruio();
 
                         empresa.agregarUsuaruio(usuario1);
                         empresa.mostrarUsuarios();

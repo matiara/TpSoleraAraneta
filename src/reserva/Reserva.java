@@ -15,8 +15,7 @@ public class Reserva {
     private int cantAcompañantes;
     private int selecAvion;
     private float costoTotal;
-
-
+    private ArrayList<Usuario> listaUsuarios;
 
     public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal){
         this.fecha = fecha;
@@ -25,12 +24,13 @@ public class Reserva {
         this.cantAcompañantes = cantAcompañantes;
         this.selecAvion = selecAvion;
         this.costoTotal = costoTotal;
-
+        this.listaUsuarios = new ArrayList<>();
     }
 
     Scanner reader = new Scanner(System.in);
 
     ///------------------------GETS AND SETS ------------------------------------
+
 
     public int getFecha() {
         return fecha;
@@ -49,6 +49,16 @@ public class Reserva {
     }
 
     ///---------------------------------------------------------------------------
+
+    public void agregarUsuarios(Usuario u){
+        listaUsuarios.add(u);
+    }
+
+    public void mostrarListaUsuarios(){
+        for(int i=0;i<listaUsuarios.size();i++){
+            System.out.println("Nombre: "+listaUsuarios.get(i) + "Apellido: " +listaUsuarios.get(i).getApellido() + "DNI:" + listaUsuarios.get(i).getDni() + "Edad: " + listaUsuarios.get(i).getEdad());
+        }
+    }
 
     public void mostrarLugares(){
         System.out.println("Lugares: ");
@@ -196,9 +206,6 @@ public class Reserva {
         this.cantAcompañantes = putCantAcompañantes();
         this.selecAvion = selecAvion();
     }
-
-
-
 
 
     ///funcion calcular costo
