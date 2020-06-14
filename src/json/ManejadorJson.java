@@ -53,6 +53,38 @@ public class ManejadorJson {
         float website = (Float)employeeObject.get("edad");
         System.out.println(website);
     }
+ 
+    public void writeUser(Usuario newUser) {
+        JSONObject newUserObject = new JSONObject();
+        newUserObject.put("nombre", newUser.getNombre());
+        newUserObject.put("apellido", newUser.getApellido());
+        newUserObject.put("edad", newUser.getEdad());
+        newUserObject.put("dni", newUser.getDni());
 
+        try {
+            FileWriter file = new FileWriter("src/json/data.json");
+
+            try {
+                JSONArray currentUsers = (JSONArray)this.data.get("usuarios");
+                currentUsers.add(newUserObject);
+                this.data.replace("usuarios", currentUsers);
+                file.write(this.data.toJSONString());
+                file.flush();
+            } catch (Throwable var7) {
+                try {
+                    file.close();
+                } catch (Throwable var6) {
+                    var7.addSuppressed(var6);
+                }
+
+                throw var7;
+            }
+
+            file.close();
+        } catch (IOException var8) {
+            var8.printStackTrace();
+        }
+
+    }
    
 }
