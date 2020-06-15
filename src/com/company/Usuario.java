@@ -9,12 +9,15 @@ public class Usuario {
     private int dni;
     private int edad;
 
-//    public Usuario(String nombre, String apellido, int dni, int edad){
-//        this.nombre = nombre;
-//        this.apellido = apellido;
-//        this.dni = dni;
-//        this.edad = edad;
-//    }
+   public Usuario(String nombre, String apellido, int dni, int edad){
+       this.nombre = nombre;
+       this.apellido = apellido;
+       this.dni = dni;
+       this.edad = edad;
+   }
+    public Usuario(){
+
+    }
 
     Scanner reader = new Scanner(System.in);
 
@@ -120,15 +123,7 @@ public class Usuario {
     }
 
     ///-------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
+    
 
 }
+
