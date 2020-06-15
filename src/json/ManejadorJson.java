@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.company.Empresa;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,7 +22,7 @@ public class ManejadorJson
 {
     private JSONObject data;
 
-    public ManejadorJson(){
+    public ManejadorJson(Empresa empresa){
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
         try (FileReader reader = new FileReader("src/json/data.json"))
@@ -30,6 +31,16 @@ public class ManejadorJson
             Object obj = jsonParser.parse(reader);
 
             this.data = (JSONObject) obj;
+
+            JSONArray allUsuarios= (JSONArray) this.data.get("usuarios");
+
+
+
+            empresa.inicializarUsuarios(allUsuarios);
+            ///empesa.escribiraviones   /// para hacer
+            ///empesa.escribirreserva
+
+
 
             System.out.println("Informacion en el sistema: " + this.data);
 
@@ -41,25 +52,6 @@ public class ManejadorJson
             e.printStackTrace();
         }
     }
-
-    private static void parseEmployeeObject(JSONObject employee)
-    {
-        //Get employee object within list
-        JSONObject employeeObject = (JSONObject) employee.get("personas");
-
-        //Get employee first name
-        String firstName = (String) employeeObject.get("nombre");
-        System.out.println(firstName);
-
-        //Get employee last name
-        String lastName = (String) employeeObject.get("apellido");
-        System.out.println(lastName);
-
-        //Get employee website name
-        float website = (float) employeeObject.get("edad");
-        System.out.println(website);
-    }
-
 
 
     public void writeUser(Usuario newUser)
@@ -82,5 +74,7 @@ public class ManejadorJson
             e.printStackTrace();
         }
     }
+
+
 
 }
