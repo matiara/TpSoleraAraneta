@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.TipoAvion;
 import com.company.Usuario;
+import org.json.simple.JSONArray;
 import reserva.Lugares;
 import reserva.Reserva;
 
@@ -32,9 +33,25 @@ public class Empresa {
         System.out.println(mapUsuarios.values());
     }
 
+
+
+    public void inicializarUsuarios(JSONArray allUsuarios){
+
+        for (int i = 0; i < allUsuarios.size(); i++) {
+
+            Object usuario = allUsuarios.get(i);
+            System.out.println("hola"+ usuario.);
+        }
+    }
+    ///funcion para how to convert from jsonarray to arraylist(aviones)
+    ///funcion para how to convert from jsonarray to hashmap(reserva)
+
+
+
     public void agregarAvion(TipoAvion avion){
         listaAviones.add(avion);
     }
+
     public void mostrarArregloAviones(){
         int cont=0;
         for(int i=0;i<listaAviones.size();i++){
