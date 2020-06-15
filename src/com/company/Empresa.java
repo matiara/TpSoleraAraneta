@@ -24,13 +24,14 @@ public class Empresa {
         this.listaAviones = new ArrayList<TipoAvion>();
         this.mapReservas = new HashMap<Integer, Reserva>();
     }
-    public void agregarUsuaruio(Usuario u){
+    public void agregarUsuario(Usuario u){
         mapUsuarios.put(u.getDni(),u);
     }
     public void mostrarUsuarios(){
         System.out.println(mapUsuarios.keySet());
         System.out.println(mapUsuarios.values());
     }
+
     public void agregarAvion(TipoAvion avion){
         listaAviones.add(avion);
     }

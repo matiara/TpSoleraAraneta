@@ -1,36 +1,52 @@
 package main;
-
 import clasesextra.Bronze;
 import clasesextra.Gold;
 import clasesextra.Silver;
 import com.company.Empresa;
 import com.company.Motor;
 import com.company.Usuario;
+import reserva.Reserva;
+import json.ManejadorJson;
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import json.ManejadorJson;
-import reserva.Lugares;
-import reserva.Reserva;
 
 public class Main {
 
     public static void main(String[] args) {
+
         ManejadorJson manejador = new ManejadorJson();
+//        empresa.cargarAviones(manejador.leerAviones);
+//        empresa.cargarUsuarios(manejador.leerUsuarios);
+//        empresa.cargarReservas(manejador.leerReservas);
+        // Crear menu aparte
+
+        /// CREANDO EMPRESA
         System.out.println("Empresa");
 
-        Empresa empresa = new Empresa("Aerotaxi Club");
+        Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
         Scanner scanner = new Scanner(System.in);
 
-        Reserva reserva = new Reserva(0, (Lugares)null, (Lugares)null, 0, 0, 0);
+        ///CREANDO RESERVA
+        Reserva reserva = new Reserva(0,null,null, 0,0,0);
+
         reserva.mostrarListaUsuarios();
 
-        Bronze bronze1 = new Bronze(1000.0F, 150.0F, 3, 400.0F, Motor.reaccion);
-        Bronze bronze2 = new Bronze(1100.0F, 150.0F, 3, 400.0F, Motor.reaccion);
-        Silver silver1 = new Silver(1250.0F, 200.0F, 5, 500.0F, Motor.helice);
-        Silver silver2 = new Silver(1250.0F, 200.0F, 5, 500.0F, Motor.helice);
-        Gold gold1 = new Gold(1500.0F, 300.0F, 8, 750.0F, Motor.pistones);
-        Gold gold2 = new Gold(1500.0F, 350.0F, 8, 800.0F, Motor.pistones);
 
+        ///CREANDO AVIONES
+        ///--------------Bronce
+        Bronze bronze1 = new Bronze(1000,150,3,400, Motor.reaccion);
+        Bronze bronze2 = new Bronze(1100,150,3,400,Motor.reaccion);
+        ///--------------Silver
+        Silver silver1 = new Silver(1250,200,5,500,Motor.helice);
+        Silver silver2 = new Silver(1250,200,5,500,Motor.helice);
+        ///--------------Gold
+        /// Aca hay dos tipos por que uno va a ser mas premium (tipo de interfaz).
+        Gold gold1 = new Gold(1500,300,8,750,Motor.pistones);
+        Gold gold2 = new Gold(1500,350,8,800,Motor.pistones);
+        ///-------------------------------------------------------------------------------------------------------------
+        ///AGREGANDO AVIONES A EL ARREGLO
         empresa.agregarAvion(bronze1);
         empresa.agregarAvion(bronze2);
         empresa.agregarAvion(silver1);
@@ -38,10 +54,22 @@ public class Main {
         empresa.agregarAvion(gold1);
         empresa.agregarAvion(gold2);
 
+        //empresa.mostrarArregloAviones();
 
-        int opcion = 0;
-        int opcion2 = 0;
+        /// CREANDO MENU INTERACTIVO
+        int opcion=0;
+        int opcion2=0;
+        int opcion3=0;
         boolean salir = false;
+/*
+        System.out.println("MOSTRANDO");
+        reserva.toString();
+        reserva.toString();
+        reserva.pasarValores();
+        System.out.println("");
+        reserva.toString();
+*/
+
 
         while(!salir){
             System.out.println("1 | Registrarse");
@@ -56,53 +84,89 @@ public class Main {
                     case 1:
 
                         /// PROBANDO DE CREAR UN USUARIO EN DONDE SE AGREGE A EMPRESA, Y SE LO MUESTRE.
+                        Usuario nuevoUsuario = new Usuario();
+                        nuevoUsuario.crearUsuario();
+                        empresa.agregarUsuario(nuevoUsuario);
+                        manejador.writeUser(nuevoUsuario);
 
-                        //Usuario usuario1 = new Usuario("","",0,0);
-                        //usuario1.crearUsuaruio();
-
-                        empresa.agregarUsuaruio(usuario1);
-                        empresa.mostrarUsuarios();
                         salir = true;
                         break;
 
                     case 2:
-                        System.out.println("Ingrese los valores correspondientes para realizar la reserva");
+                        while(!salir){
+                            System.out.println("1 | OPCION");
+                            System.out.println("2 | Seleccionar Origen-Destino");
+                            System.out.println("3 | Cantidad Acompañantes");
+                            System.out.println("4 | Seleccionar Avion");
+                            System.out.println("5 | Costo Total");
+                            System.out.println("6 | Pasar valores (Temporal)");
 
-                        ///------------------------------------ORIGEN DESTINO ------------------------------
-                        System.out.println("Indique desde donde quiere partir...");
-                        int origen = reserva.selecOrigen();
-                        System.out.println("Indique hacia donde quiere ir...");
-                        int destino = reserva.selecDestino();
+                            System.out.println("Ingrese una opcion: ");
+                            opcion2 = scanner.nextInt();
 
-                        if(origen == destino){
-                            System.out.println("El destino y el origen no pueden ser iguales");
-                        }
+                            switch (opcion2){
 
-                        System.out.println("Usted quiere salir desde : " + origen + "hacia :" + destino);
+                                case 1:
+                                    System.out.println("ESTE ES EL SUBMENU PARTE 1");
+                                    break;
 
-                        ///-------------------------------CANT DE ACOMPAÑANTES----------------------------
-                        System.out.println("Indique la cantidad de acompañantes que viajan con usted");
-                        reserva.putCantAcompañantes();
-                        System.out.println("La cantidad de acompañantes que indico es: " + reserva.getCantAcompañantes());
+                                case 2:
+                                    int origen = reserva.selecOrigen();
+                                    int destino = reserva.selecDestino();
 
-                        ///-------------------------------SELECCIONAR AVION --------------------------------
-                        System.out.println("Seleccione el avion que mejor se adapte a sus pretenciones de vuelo");
-                        empresa.mostrarArregloAviones();
-                        reserva.selecAvion();
-                        ///-------------------------------OBTENER DISTANCIA (FALTA)-------------------------
-                             /*
-                             System.out.println("Obteniendo distancia");
+                                    if(origen == destino){
+                                        System.out.println("El destino y el origen no pueden ser iguales");
+                                    }
+
+                                    if(origen == 1){
+
+                                    }
+                                    System.out.println("Usted quiere salir desde : " + origen + "hacia :" + destino);
+
+
+                                    break;
+
+                                case 3:
+                                    reserva.putCantAcompañantes();
+                                    System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
+                                    break;
+
+
+                                case 4:
+                                    System.out.println("Seleccionar avion");
+                                    empresa.mostrarArregloAviones();
+                                    reserva.selecAvion();
+
+
+                                    break;
+
+                                case 5:
+
+
+                                    System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
-                             */
-                        ///------------------------------PASAR VALORES (PRUEBA)-----------------------------
-                             /*
+
+                                    break;
+
+                                case 6:
+
                                     reserva.pasarValores();
+
                                     System.out.println("Mostrando la reserva");
                                     System.out.println("Cantidad de acompañantes: "+reserva.getCantAcompañantes());
                                     System.out.println("Avion elejido: " + reserva.getSelecAvion());
-                                */
-                        ///*********************************************************************************
+
+
+                                    /// DESPUES QUEDA ESTE CODIGO
+                                    /*
+                                    System.out.println("SALIR");
+                                    salir = true;
+                                    break;
+                                    */
+
+                            }
+                        }
 
                     default:
                         System.out.println("Las opciones son 1 o 2");
@@ -111,10 +175,10 @@ public class Main {
             } catch(InputMismatchException ex) {
                 System.err.println("Debes introducir un numero");
                 scanner.next();
-
             }
         }
+
+
     }
 }
-
 
