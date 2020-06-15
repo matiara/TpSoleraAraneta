@@ -7,7 +7,6 @@ import com.company.Motor;
 import com.company.Usuario;
 import reserva.Reserva;
 import json.ManejadorJson;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,6 +14,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+        Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
 
         ManejadorJson manejador = new ManejadorJson();
 //        empresa.cargarAviones(manejador.leerAviones);
@@ -25,14 +26,12 @@ public class Main {
         /// CREANDO EMPRESA
         System.out.println("Empresa");
 
-        Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
         Scanner scanner = new Scanner(System.in);
 
         ///CREANDO RESERVA
         Reserva reserva = new Reserva(0,null,null, 0,0,0);
 
         reserva.mostrarListaUsuarios();
-
 
         ///CREANDO AVIONES
         ///--------------Bronce
@@ -70,7 +69,6 @@ public class Main {
         reserva.toString();
 */
 
-
         while(!salir){
             System.out.println("1 | Registrarse");
             System.out.println("2 | Iniciar Reserva") ;
@@ -88,29 +86,11 @@ public class Main {
                         nuevoUsuario.crearUsuario();
                         empresa.agregarUsuario(nuevoUsuario);
                         manejador.writeUser(nuevoUsuario);
-
                         salir = true;
                         break;
 
                     case 2:
-                        while(!salir){
-                            System.out.println("1 | OPCION");
-                            System.out.println("2 | Seleccionar Origen-Destino");
-                            System.out.println("3 | Cantidad Acompañantes");
-                            System.out.println("4 | Seleccionar Avion");
-                            System.out.println("5 | Costo Total");
-                            System.out.println("6 | Pasar valores (Temporal)");
-
-                            System.out.println("Ingrese una opcion: ");
-                            opcion2 = scanner.nextInt();
-
-                            switch (opcion2){
-
-                                case 1:
-                                    System.out.println("ESTE ES EL SUBMENU PARTE 1");
-                                    break;
-
-                                case 2:
+                                    /// ORIGEN - DESTINO
                                     int origen = reserva.selecOrigen();
                                     int destino = reserva.selecDestino();
 
@@ -118,39 +98,24 @@ public class Main {
                                         System.out.println("El destino y el origen no pueden ser iguales");
                                     }
 
-                                    if(origen == 1){
+                                    System.out.println("Usted quiere salir desde: " + origen + "hacia :" + destino);
 
-                                    }
-                                    System.out.println("Usted quiere salir desde : " + origen + "hacia :" + destino);
-
-
-                                    break;
-
-                                case 3:
+                                    /// CANTIDAD ACOMPAÑANTES.
                                     reserva.putCantAcompañantes();
                                     System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
-                                    break;
 
-
-                                case 4:
+                                    /// SELECCIONAR AVION.
                                     System.out.println("Seleccionar avion");
                                     empresa.mostrarArregloAviones();
                                     reserva.selecAvion();
 
-
-                                    break;
-
-                                case 5:
-
-
+                                    /// OBTENIENDO DISTANCIA.
+                                    /*
                                     System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
 
-                                    break;
-
-                                case 6:
-
+                                    /*
                                     reserva.pasarValores();
 
                                     System.out.println("Mostrando la reserva");
@@ -159,26 +124,19 @@ public class Main {
 
 
                                     /// DESPUES QUEDA ESTE CODIGO
-                                    /*
+
                                     System.out.println("SALIR");
                                     salir = true;
                                     break;
                                     */
-
+                        default:
+                            System.out.println("Las opciones son 1 o 2");
                             }
-                        }
 
-                    default:
-                        System.out.println("Las opciones son 1 o 2");
-
-                }
-            } catch(InputMismatchException ex) {
-                System.err.println("Debes introducir un numero");
-                scanner.next();
+                }catch(InputMismatchException ex) {
+                    System.err.println("Debes introducir un numero");
+                    scanner.next();
             }
         }
-
-
     }
 }
-
