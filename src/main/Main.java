@@ -17,7 +17,7 @@ public class Main {
 
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
 
-        ManejadorJson manejador = new ManejadorJson();
+        ManejadorJson manejador = new ManejadorJson(empresa);
 //        empresa.cargarAviones(manejador.leerAviones);
 //        empresa.cargarUsuarios(manejador.leerUsuarios);
 //        empresa.cargarReservas(manejador.leerReservas);
