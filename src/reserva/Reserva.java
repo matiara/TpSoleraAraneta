@@ -1,9 +1,6 @@
 package reserva;
 
-import com.company.Empresa;
 import com.company.Usuario;
-import org.w3c.dom.ls.LSOutput;
-import reserva.Lugares;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,7 +14,9 @@ public class Reserva {
     private float costoTotal;
     private ArrayList<Usuario> listaUsuarios;
 
-    public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal){
+    private int dni;
+
+    public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal,int dni){
         this.fecha = fecha;
         this.origen = origen;
         this.destino = destino;
@@ -25,11 +24,18 @@ public class Reserva {
         this.selecAvion = selecAvion;
         this.costoTotal = costoTotal;
         this.listaUsuarios = new ArrayList<>();
+        this.dni = dni;
     }
+
+    public Reserva(){
+
+    }
+
 
     Scanner reader = new Scanner(System.in);
 
     ///------------------------GETS AND SETS ------------------------------------
+
 
 
     public int getFecha() {
@@ -48,9 +54,13 @@ public class Reserva {
         return costoTotal;
     }
 
-    ///---------------------------------------------------------------------------
+    public int getDni() {
+        return dni;
+    }
 
-    public void agregarUsuarios(Usuario u){
+
+    ///---------------------------------------------------------------------------
+     public void agregarUsuarios(Usuario u){
         listaUsuarios.add(u);
     }
 
