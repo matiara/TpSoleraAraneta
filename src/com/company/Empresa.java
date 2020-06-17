@@ -3,6 +3,7 @@ package com.company;
 import com.company.TipoAvion;
 import com.company.Usuario;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import reserva.Lugares;
 import reserva.Reserva;
 
@@ -28,6 +29,10 @@ public class Empresa {
     public void agregarUsuario(Usuario u){
         mapUsuarios.put(u.getDni(),u);
     }
+    //agregar avion
+    //agregarreserva
+
+
     public void mostrarUsuarios(){
         System.out.println(mapUsuarios.keySet());
         System.out.println(mapUsuarios.values());
@@ -39,10 +44,27 @@ public class Empresa {
 
         for (int i = 0; i < allUsuarios.size(); i++) {
 
-            Object usuario = allUsuarios.get(i);
-            System.out.println("hola"+ usuario.);
+            JSONObject usuario = (JSONObject) allUsuarios.get(i);
+            Usuario e = new Usuario(usuario.get("nombre").toString(),usuario.get("apellido").toString(), Integer.parseInt(usuario.get("edad").toString()),Integer.parseInt(usuario.get("dni").toString()));
+            agregarUsuario(e);
+
         }
     }
+    public void inicializarAviones(JSONArray allAviones){
+
+        for (int i = 0; i < allAviones.size(); i++) {
+
+
+
+        }
+    }
+
+
+
+
+
+
+
     ///funcion para how to convert from jsonarray to arraylist(aviones)
     ///funcion para how to convert from jsonarray to hashmap(reserva)
 
