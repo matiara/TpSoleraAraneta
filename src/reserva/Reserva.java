@@ -13,10 +13,9 @@ public class Reserva {
     private int selecAvion;
     private float costoTotal;
     private ArrayList<Usuario> listaUsuarios;
-
     private int dni;
 
-    public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, int costoTotal,int dni){
+    public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, float costoTotal,int dni){
         this.fecha = fecha;
         this.origen = origen;
         this.destino = destino;
@@ -37,6 +36,13 @@ public class Reserva {
     ///------------------------GETS AND SETS ------------------------------------
 
 
+    public Lugares getOrigen() {
+        return origen;
+    }
+
+    public Lugares getDestino() {
+        return destino;
+    }
 
     public int getFecha() {
         return fecha;
