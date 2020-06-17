@@ -18,9 +18,12 @@ public class Main {
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
 
         ManejadorJson manejador = new ManejadorJson(empresa);
-//        empresa.cargarAviones(manejador.leerAviones);
-//        empresa.cargarUsuarios(manejador.leerUsuarios);
-//        empresa.cargarReservas(manejador.leerReservas);
+
+
+
+        // empresa.cargarAviones(manejador.leerAviones);
+        // empresa.cargarUsuarios(manejador.leerUsuarios);
+        // empresa.cargarReservas(manejador.leerReservas);
         // Crear menu aparte
 
         /// CREANDO EMPRESA
@@ -29,7 +32,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         ///CREANDO RESERVA
-        Reserva reserva = new Reserva(0,null,null, 0,0,0);
+        Reserva reserva = new Reserva(0,null,null, 0,0,0, 0);
 
         reserva.mostrarListaUsuarios();
 
