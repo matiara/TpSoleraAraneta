@@ -13,6 +13,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+
+
 import com.company.TipoAvion;
 import com.company.Usuario;
 import reserva.Lugares;
@@ -33,8 +35,6 @@ public class ManejadorJson
             this.data = (JSONObject) obj;
 
             JSONArray allUsuarios= (JSONArray) this.data.get("usuarios");
-
-
 
             empresa.inicializarUsuarios(allUsuarios);
             ///empesa.escribiraviones   /// para hacer
@@ -75,6 +75,29 @@ public class ManejadorJson
         }
     }
 
+    public void writeReserva(Reserva newReserva)
+    {
+        JSONObject newReservaObject = new JSONObject();
+        newReservaObject.put("fecha" , newReserva.getFecha());
+        newReservaObject.put("cantAcompañates", newReserva.getCantAcompañantes());
+        newReservaObject.put("SelecAvion", newReserva.getSelecAvion());
+        newReservaObject.put("CostoTotal", newReserva.getCostoTotal());
+        newReservaObject.put("Dni", newReserva.getDni());
+        newReservaObject.put("origen", newReserva.get);
+        newReservaObject.put("destino", newReserva.selecDestino());
 
+
+        try (FileWriter file = new FileWriter("src/json/data.json")) {
+
+            JSONArray currentReserva = (JSONArray) this.data.get("reservas");
+            currentReserva.add(newReserva);
+            this.data.replace("reservas", currentReserva);
+            file.write(this.data.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
