@@ -83,7 +83,7 @@ public class ManejadorJson
         newReservaObject.put("SelecAvion", newReserva.getSelecAvion());
         newReservaObject.put("CostoTotal", newReserva.getCostoTotal());
         newReservaObject.put("Dni", newReserva.getDni());
-        newReservaObject.put("origen", newReserva.get);
+        newReservaObject.put("origen", newReserva.getFecha());
         newReservaObject.put("destino", newReserva.selecDestino());
 
 
