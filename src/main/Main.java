@@ -30,7 +30,7 @@ public class Main {
         // Crear menu aparte
 
         ///CREANDO RESERVA
-        Reserva reserva = new Reserva(0,null,null, 0,0,0, 0);
+        Reserva reserva = new Reserva(12/5/2018,null,null, 0,0,0, 0);
 
         reserva.mostrarListaUsuarios();
 
@@ -91,6 +91,13 @@ public class Main {
                         break;
 
                     case 2:
+                        ///FECHA
+
+                        reserva.indicarFecha();
+                        System.out.println("La fecha indicada es: ");
+                        System.out.println("" + reserva.getFecha());
+
+
 
                         /// ORIGEN - DESTINO
 
@@ -106,7 +113,7 @@ public class Main {
                                     System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
 
                                     /// SELECCIONAR AVION.
-                                    System.out.println("Seleccionar avion");
+
                                    /// empresa.mostrarArregloAviones();
                                     reserva.selecAvion();
 
@@ -115,20 +122,14 @@ public class Main {
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
 
-                                    reserva.pasarValores();
+                                    ///MOSTRANDO LOS DATOS DE LA RESERVA
+                                    reserva.mostrarValores();
 
-                                    System.out.println("Mostrando la reserva");
-                                    System.out.println("Cantidad de acompañantes: "+reserva.getCantAcompañantes());
-                                    System.out.println("Avion elejido: " + reserva.getSelecAvion());
-
-
-                                    /// DESPUES QUEDA ESTE CODIGO
-
-                                    System.out.println("SALIR");
                                     salir = true;
                                     break;
                     case 3:
                         System.out.println("Cancelar Reserva");
+                        System.out.println("LA RESERVA ES: "+ reserva.toString());
                         break;
 
                         default:

@@ -2,9 +2,11 @@ package reserva;
 
 import com.company.Usuario;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.spi.CalendarDataProvider;
 
 public class Reserva {
     private int fecha;
@@ -26,16 +28,15 @@ public class Reserva {
         this.listaUsuarios = new ArrayList<>();
         this.dni = dni;
     }
-
+/*
     public Reserva(){
 
     }
-
+*/
 
     Scanner reader = new Scanner(System.in);
 
     ///------------------------GETS AND SETS ------------------------------------
-
 
     public Lugares getOrigen() {
         return origen;
@@ -65,6 +66,18 @@ public class Reserva {
         return dni;
     }
 
+    @Override
+    public String toString() {
+        return "Reserva | " +
+                "Fecha:" + fecha +
+                ", Origen:" + origen +
+                ", Destino:" + destino +
+                ", Cantidad acompañantes:" + cantAcompañantes +
+                ", Avion seleccionado:" + selecAvion +
+                ", Costo Total:" + costoTotal +
+                //", pasajeros:" + pasajeros +
+                ", reader:" + reader;
+    }
 
     ///---------------------------------------------------------------------------
     public void agregarUsuarios(Usuario u){
@@ -85,8 +98,29 @@ public class Reserva {
         System.out.println("Nº4 Montevideo");
     }
 
+
+
+
+
+
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
+
+    public void indicarFecha(){
+        Calendar c1 = GregorianCalendar.getInstance();
+        System.out.println("Fecha actual: " +c1.getTime().toLocaleString());
+        SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Ingrese la fecha que quiere realizar el vuelo");
+        String sDate1 = reader.next();
+        try {
+            Date date1 = fecha.parse(sDate1);
+            System.out.println("A usted le gustaria reservar en la fecha: " + date1);
+        } catch (ParseException e) {
+            System.err.println("Error al ingresar la fecha");
+        }
+    }
+
+
 ///---------------------------------------------------------------------------------------------------------------------
     //2) SELECCIONAR DESTINO Y ORIGEN.
     public int selecOrigen(){
@@ -108,12 +142,12 @@ public class Reserva {
                 this.origen = Lugares.BuenoAires;
             }
             if(valorOrigen == 2){
-                System.out.println("Lugar de origen: Santiago");
-                this.origen = Lugares.Santiago;
-            }
-            if(valorOrigen == 3){
                 System.out.println("Lugar de origen: Cordoba");
                 this.origen = Lugares.Cordoba;
+            }
+            if(valorOrigen == 3){
+                System.out.println("Lugar de origen: Santiago de chile");
+                this.origen = Lugares.Santiago;
             }
             if(valorOrigen == 4){
                 System.out.println("Lugar de origen: Montevideo");
@@ -136,7 +170,7 @@ public class Reserva {
             mostrarLugares();
             System.out.println("Ingrese el destino");
             valorDestino = reader.nextInt();
-            if (valorDestino <1 || valorDestino >4){
+            if (valorDestino <1 || valorDestino >=5){
                 check =0;
                 System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
             }
@@ -147,12 +181,12 @@ public class Reserva {
             }
 
             if(valorDestino == 2){
-                System.out.println("Se dirige a: Chile");
-                this.destino = Lugares.Santiago;
-            }
-            if(valorDestino == 3){
                 System.out.println("Se dirige a: Cordoba");
                 this.destino = Lugares.Cordoba;
+            }
+            if(valorDestino == 3){
+                System.out.println("Se dirige a: Santiago de chile");
+                this.destino = Lugares.Santiago;
             }
             if(valorDestino == 4){
                 System.out.println("Se dirige a: Montevideo");
@@ -209,7 +243,7 @@ public class Reserva {
                 System.out.println("El maximo es 5");
                 check=0;
             }
-
+            this.cantAcompañantes = selecAvion;
             System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
             /// validaciones en condicion de cantidad de pasajeros en total.
 
@@ -219,47 +253,14 @@ public class Reserva {
 
 
     //5) MOSTRAR COSTO TOTAL.
-/*
-    public int obtenerDistancia(){
-       //-1 si no existe destino.
-
-        int distancia = 0;
-
-        if(origen.equals(Lugares.BuenoAires)){
-            if(destino.equals(Lugares.Cordoba))
-                distancia = 695;
-            if(destino.equals(Lugares.Santiago))
-                distancia = 1400;
-            if(destino.equals(Lugares.Montevideo))
-                distancia = 950;
-            else
-                distancia = -1;
-        }
-        else if(origen.equals(Lugares.Cordoba)){
-            if(destino.equals(Lugares.Montevideo))
-                distancia = 1190;
-            if(destino.equals(Lugares.Santiago))
-                distancia = 1050;
-        }
-        else if(origen.equals(Lugares.Montevideo)){
-            if(destino.equals(Lugares.Santiago))
-                distancia = 2100;
-            else
-                distancia = -1;
-        }
-        else if(origen.equals(Lugares.Santiago)){
-            distancia = -1;
-        }
-
-        return distancia;
-    }
-*/
-
     public int obtenerDistancia(){
         //-1 si no existe destino.
 
         int distancia = 0;
-
+        if(origen.equals(Lugares.BuenoAires) && destino.equals(Lugares.Santiago)){
+            System.out.println("La distancia es de 1400");
+            distancia = 1400;
+        }
         if(origen.equals(Lugares.BuenoAires)){
             if(destino.equals(Lugares.Cordoba))
                 distancia = 695;
@@ -267,8 +268,8 @@ public class Reserva {
                 distancia = 1400;
             if(destino.equals(Lugares.Montevideo))
                 distancia = 950;
-            else
-                distancia = -1;
+            /*else
+                distancia = -1;*/
         }
         else if(origen.equals(Lugares.Cordoba)){
             if(destino.equals(Lugares.Montevideo))
@@ -289,56 +290,18 @@ public class Reserva {
         return distancia;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Override
-    public String toString() {
-        return "Reserva{" +
-                "fecha=" + fecha +
-                ", origen=" + origen +
-                ", destino=" + destino +
-                ", cantAcompañantes=" + cantAcompañantes +
-                ", selecAvion=" + selecAvion +
-                ", costoTotal=" + costoTotal +
-                //", pasajeros=" + pasajeros +
-                ", reader=" + reader +
-                '}';
-    }
+    ///funcion calcular costo
 
 
     /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
-
-    /// LUEGO QUE PASE LOS VALORES A LOS THIS. (PASAR VALORES A RESERVA)
-    public void pasarValores(){
-        //this.origen = selecOrigen(); // DA ERROR POR QUE SELEC ORIGEN DEVUELVE UN INT. HACER TRANSFERENCIA INDICANDO QUE CIUDAD ES CADA INT.
-        //this.destino = selecDestino() // LO MISMO QUE ORIGEN.
-        this.cantAcompañantes = putCantAcompañantes();
-        this.selecAvion = selecAvion();
+        public void mostrarValores(){
+        System.out.println("Mostrando los datos de la reserva");
+        System.out.println("Fecha: ");
+        System.out.println("Origen: " + this.origen);
+        System.out.println("Destino: " + this.destino);
+        System.out.println("Cantidad de acompañantes: " + this.cantAcompañantes);
+        System.out.println("Avion Seleccionado: " + this.selecAvion);
+        System.out.println("Costo total: ");
     }
-
-
-    ///funcion calcular costo
 
 }
