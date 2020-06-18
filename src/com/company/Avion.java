@@ -6,10 +6,10 @@ public class Avion {
     private int sizePasajeros;
     private float velMaxima;
     private Motor motor;
-    private int tipoAvion;
+    private String tipoAvion;
 
 
-    public Avion(float capConbustible,float costoXkm, int sizePasajeros, float velMaxima, Motor motor,int tipoAvion){
+    public Avion(float capConbustible,float costoXkm, int sizePasajeros, float velMaxima, Motor motor,String tipoAvion){
         this.capConbustible = capConbustible;
         this.costoXkm = costoXkm;
         this.sizePasajeros = sizePasajeros;
@@ -33,11 +33,11 @@ public class Avion {
                 "| Tipo de motor: " + motor;
     }
 
-    public int getTipoAvion() {
+    public String getTipoAvion() {
         return tipoAvion;
     }
 
-    public void setTipoAvion(int tipoAvion) {
+    public void setTipoAvion(String tipoAvion) {
         this.tipoAvion = tipoAvion;
     }
 
