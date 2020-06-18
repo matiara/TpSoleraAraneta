@@ -102,29 +102,26 @@ public class Reserva {
                 check =0;
                 System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
             }
+
+            if(valorOrigen == 1){
+                System.out.println("Lugar de origen: Buenos Aires");
+            }
+            if(valorOrigen == 2){
+                System.out.println("Lugar de origen: Santiago");
+            }
+            if(valorOrigen == 3){
+                System.out.println("Lugar de origen: Cordoba");
+            }
+            if(valorOrigen == 4){
+                System.out.println("Lugar de origen: Montevideo");
+            }
+
             else {
                 check =1;
             }
+
         }
         return valorOrigen;
-    }
-
-    public void convertirOrigen(){
-        int takeOrigen = selecOrigen();
-
-        if(takeOrigen == 1){
-            this.origen = Lugares.BuenoAires;
-        }
-        if(takeOrigen == 2){
-            this.origen = Lugares.Santiago;
-        }
-        if(takeOrigen == 3){
-            this.origen = Lugares.Cordoba;
-        }
-        if(takeOrigen == 4){
-            this.origen = Lugares.Montevideo;
-        }
-
     }
 
     public int selecDestino(){
@@ -139,6 +136,21 @@ public class Reserva {
                 check =0;
                 System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
             }
+
+            if(valorDestino == 1){
+                System.out.println("Se dirige a: Buenos aires");
+            }
+
+            if(valorDestino == 2){
+                System.out.println("Se dirige a: Chile");
+            }
+            if(valorDestino == 3){
+                System.out.println("Se dirige a: Cordoba");
+            }
+            if(valorDestino == 4){
+                System.out.println("Se dirige a: Montevideo");
+            }
+
             else {
                 check =1;
             }
@@ -146,26 +158,6 @@ public class Reserva {
         return valorDestino;
     }
 
-
-    /// CONVERTIDOR DESTINO lo que hace es tranformar el INT ingresado en el primer metodo (el de arriba), en el enum correspondiente.
-
-    public void convertirDestino(){
-        int takeDestino = selecDestino();
-
-        if(takeDestino == 1){
-            this.destino = Lugares.BuenoAires;
-        }
-        if(takeDestino == 2){
-            this.destino = Lugares.Santiago;
-        }
-        if(takeDestino == 3){
-            this.destino = Lugares.Cordoba;
-        }
-        if(takeDestino == 4){
-            this.destino = Lugares.Montevideo;
-        }
-
-    }
 
 ///---------------------------------------------------------------------------------------------------------------------
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.

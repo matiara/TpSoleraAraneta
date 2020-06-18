@@ -101,37 +101,6 @@ public class Main {
                                         System.out.println("El destino y el origen no pueden ser iguales");
                                     }
 
-                                    /// IF PARA HACER TRANSFERENCIA DE LOS VALORES NUMERICOS A CIUDAD QUE PUEDA VER EL USUARIO
-
-                                    if(origen == 1){
-                                        System.out.println("Lugar de origen: Buenos Aires");
-                                    }
-                                    if(origen == 2){
-                                        System.out.println("Lugar de origen: Santiago");
-                                    }
-                                    if(origen == 3){
-                                        System.out.println("Lugar de origen: Cordoba");
-                                    }
-                                    if(origen == 4){
-                                        System.out.println("Lugar de origen: Montevideo");
-                                    }
-                                    if(destino == 1){
-                                        System.out.println("Se dirige a: Buenos aires");
-                                    }
-
-                                    if(destino == 2){
-                                        System.out.println("Se dirige a: Chile");
-                                    }
-                                    if(destino == 3){
-                                        System.out.println("Se dirige a: Cordoba");
-                                    }
-                                    if(destino == 4){
-                                        System.out.println("Se dirige a: Montevideo");
-                                    }
-
-                                    reserva.convertirOrigen();
-                                    reserva.convertirDestino();
-
                                     /// CANTIDAD ACOMPAÑANTES.
                                     reserva.putCantAcompañantes();
                                     System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
