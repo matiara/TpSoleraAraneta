@@ -1,21 +1,38 @@
 {
-  "gold": {
-    "capCombustible": 1500,
-    "tipoPropulsion": "pistones",
-    "maxCapacity": 8,
-    "maxVelocity": 750,
-    "kmCosto": 300
-  },
+  "aviones": [
+    {
+      "tipoAvion": "gold",
+      "maxVelocidad": 600,
+      "tipoPropulsion": "pistones",
+      "maxCapacidad": 8,
+      "capCombustible": 800,
+      "kmCosto": 350
+    },
+    {
+      "tipoAvion": "silver",
+      "maxVelocidad": 500,
+      "tipoPropulsion": "helice",
+      "maxCapacidad": 5,
+      "capCombustible": 1250,
+      "kmCosto": 200
+    },
+
+    {
+      "tipoAvion": "bronze",
+      "maxVelocidad": 400,
+      "tipoPropulsion": "reaccion",
+      "maxCapacidad": 3,
+      "capCombustible": 1000,
+      "kmCosto": 150
+    }
+
+  ]
+,
   "reservas": [
-    {}
-  ],
-  "silver": {
-    "maxVelocidad": 500,
-    "tipoPropulsion": "helice",
-    "maxCapacidad": 5,
-    "capConbustible": 1250,
-    "kmCosto": 200
-  },
+
+
+  ]
+,
   "usuarios": [
     {
       "apellido": "araneta",
@@ -35,12 +52,6 @@
       "edad": 24,
       "dni": 34789647
     }
-  ],
-  "bronze": {
-    "maxVelocidad": 400,
-    "tipoPropulsion": "reaccion",
-    "maxCapacidad": 3,
-    "capConbustible": 1000,
-    "kmCosto": 150
-  }
+  ]
+
 }
