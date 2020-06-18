@@ -1,4 +1,4 @@
-package main;
+ackage main;
 import clasesextra.Bronze;
 import clasesextra.Gold;
 import clasesextra.Silver;
@@ -38,7 +38,7 @@ public class Main {
 
         ///CREANDO AVIONES
         ///--------------Bronce
-        Bronze bronze1 = new Bronze(1000,150,3,400, Motor.reaccion);
+       /* Bronze bronze1 = new Bronze(1000,150,3,400, Motor.reaccion);
         Bronze bronze2 = new Bronze(1100,150,3,400,Motor.reaccion);
         ///--------------Silver
         Silver silver1 = new Silver(1250,200,5,500,Motor.helice);
@@ -46,15 +46,15 @@ public class Main {
         ///--------------Gold
         /// Aca hay dos tipos por que uno va a ser mas premium (tipo de interfaz).
         Gold gold1 = new Gold(1500,300,8,750,Motor.pistones);
-        Gold gold2 = new Gold(1500,350,8,800,Motor.pistones);
+        Gold gold2 = new Gold(1500,350,8,800,Motor.pistones);*/
         ///-------------------------------------------------------------------------------------------------------------
         ///AGREGANDO AVIONES A EL ARREGLO
-        empresa.agregarAvion(bronze1);
+      /*  empresa.agregarAvion(bronze1);
         empresa.agregarAvion(bronze2);
         empresa.agregarAvion(silver1);
         empresa.agregarAvion(silver2);
         empresa.agregarAvion(gold1);
-        empresa.agregarAvion(gold2);
+        empresa.agregarAvion(gold2);*/
 
         //empresa.mostrarArregloAviones();
 
@@ -63,14 +63,14 @@ public class Main {
         int opcion2=0;
         int opcion3=0;
         boolean salir = false;
-/*
+
         System.out.println("MOSTRANDO");
         reserva.toString();
         reserva.toString();
         reserva.pasarValores();
         System.out.println("");
         reserva.toString();
-*/
+
 
         while(!salir){
             System.out.println("1 | Registrarse");
@@ -109,16 +109,16 @@ public class Main {
 
                                     /// SELECCIONAR AVION.
                                     System.out.println("Seleccionar avion");
-                                    empresa.mostrarArregloAviones();
+                                   /// empresa.mostrarArregloAviones();
                                     reserva.selecAvion();
 
                                     /// OBTENIENDO DISTANCIA.
-                                    /*
+
                                     System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
 
-                                    /*
+
                                     reserva.pasarValores();
 
                                     System.out.println("Mostrando la reserva");
@@ -131,7 +131,7 @@ public class Main {
                                     System.out.println("SALIR");
                                     salir = true;
                                     break;
-                                    */
+
                         default:
                             System.out.println("Las opciones son 1 o 2");
                             }
@@ -143,3 +143,4 @@ public class Main {
         }
     }
 }
+
