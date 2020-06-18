@@ -1,7 +1,5 @@
 package com.company;
 
-import com.company.Avion;
-import com.company.Usuario;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import reserva.Lugares;
@@ -13,7 +11,7 @@ import java.util.HashMap;
 public class Empresa {
     private String nombre;
     private HashMap<Integer, Usuario> mapUsuarios;
-    private HashMap<Integer, Avion> mapAviones;
+    private HashMap<String, Avion> mapAviones;
     private HashMap<Integer, Reserva> mapReservas;
 
     /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.
@@ -21,7 +19,7 @@ public class Empresa {
     public Empresa(String nombre){
         this.nombre = nombre;
         this.mapUsuarios = new HashMap<Integer,Usuario>();
-        this.mapAviones = new HashMap<Integer, Avion>();
+        this.mapAviones = new HashMap<String, Avion>();
         this.mapReservas = new HashMap<Integer, Reserva>();
     }
     public void agregarUsuario(Usuario u){
@@ -48,18 +46,17 @@ public class Empresa {
 
         }
     }
-    public void inicializarAviones(JSONArray allAviones){
+   /* public void inicializarAviones(JSONArray allAviones){
 
         for (int i = 0; i < allAviones.size(); i++) {
 
             JSONObject avion= (JSONObject) allAviones.get(i);
-            Avion t = new Avion(Float.parseFloat(avion.get("capConbustible").toString()),Float.parseFloat(avion.get("Costokm").toString()),Integer.parseInt(avion.get("maxCapacity").toString()),Float.parseFloat(avion.get("velMaxima").toString()),Motor.valueOf(avion.get("motor").toString()),Integer.parseInt(avion.get("tipoAvion").toString()));
+            Avion t = new Avion(Float.parseFloat(avion.get("capConbustible").toString()),Float.parseFloat(avion.get("Costokm").toString()),Integer.parseInt(avion.get("maxCapacity").toString()),Float.parseFloat(avion.get("velMaxima").toString()),Motor.valueOf(avion.get("motor").toString()),avion.get("tipoAvion").toString());
             agregarAvionn(t);
-
         }
-    }
+    }*/
 
-    public void inicializarReservas(JSONArray allReservas){
+    /*public void inicializarReservas(JSONArray allReservas){
 
         for (int i = 0; i < allReservas.size(); i++) {
 
@@ -68,7 +65,7 @@ public class Empresa {
             agregarReserva(r);
 
         }
-    }
+    }*/
 
 
 
@@ -101,33 +98,3 @@ public class Empresa {
 
 }
 
-
-
-
-
-    ///funcion para how to convert from jsonarray to arraylist(aviones)
-    ///funcion para how to convert from jsonarray to hashmap(reserva)
-
-
-
-    public void agregarAvion(TipoAvion avion){
-        listaAviones.add(avion);
-    }
-
-    public void mostrarArregloAviones(){
-        int cont=0;
-        for(int i=0;i<listaAviones.size();i++){
-            System.out.println("Nº" +cont + listaAviones.get(i).toString());
-            cont++;
-        }
-    }
-
-    public void generarReserva(Usuario usuario, Reserva reserva){
-        mapReservas.put(usuario.getDni(),reserva);
-    }
-
-    public void mostrarReservas(){
-        mapReservas.get(mapUsuarios.keySet());
-    }
-
-}
