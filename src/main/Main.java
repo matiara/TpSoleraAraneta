@@ -7,6 +7,9 @@ import com.company.Motor;
 import com.company.Usuario;
 import reserva.Reserva;
 import json.ManejadorJson;
+
+import javax.crypto.spec.PSource;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,21 +18,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
 
         ManejadorJson manejador = new ManejadorJson(empresa);
-
-
 
         // empresa.cargarAviones(manejador.leerAviones);
         // empresa.cargarUsuarios(manejador.leerUsuarios);
         // empresa.cargarReservas(manejador.leerReservas);
         // Crear menu aparte
-
-        /// CREANDO EMPRESA
-        System.out.println("Empresa");
-
-        Scanner scanner = new Scanner(System.in);
 
         ///CREANDO RESERVA
         Reserva reserva = new Reserva(0,null,null, 0,0,0, 0);
@@ -64,17 +62,17 @@ public class Main {
         int opcion3=0;
         boolean salir = false;
 
-        System.out.println("MOSTRANDO");
+        /*
         reserva.toString();
         reserva.toString();
         reserva.pasarValores();
-        System.out.println("");
         reserva.toString();
-
+        */
 
         while(!salir){
             System.out.println("1 | Registrarse");
             System.out.println("2 | Iniciar Reserva") ;
+            System.out.println("3 | Cancelar Reserva");
 
             try {
 
@@ -93,7 +91,9 @@ public class Main {
                         break;
 
                     case 2:
-                                    /// ORIGEN - DESTINO
+
+                        /// ORIGEN - DESTINO
+
                                     int origen = reserva.selecOrigen();
                                     int destino = reserva.selecDestino();
 
@@ -101,7 +101,36 @@ public class Main {
                                         System.out.println("El destino y el origen no pueden ser iguales");
                                     }
 
-                                    System.out.println("Usted quiere salir desde: " + origen + "hacia :" + destino);
+                                    /// IF PARA HACER TRANSFERENCIA DE LOS VALORES NUMERICOS A CIUDAD QUE PUEDA VER EL USUARIO
+
+                                    if(origen == 1){
+                                        System.out.println("Lugar de origen: Buenos Aires");
+                                    }
+                                    if(origen == 2){
+                                        System.out.println("Lugar de origen: Santiago");
+                                    }
+                                    if(origen == 3){
+                                        System.out.println("Lugar de origen: Cordoba");
+                                    }
+                                    if(origen == 4){
+                                        System.out.println("Lugar de origen: Montevideo");
+                                    }
+                                    if(destino == 1){
+                                        System.out.println("Se dirige a: Buenos aires");
+                                    }
+
+                                    if(destino == 2){
+                                        System.out.println("Se dirige a: Chile");
+                                    }
+                                    if(destino == 3){
+                                        System.out.println("Se dirige a: Cordoba");
+                                    }
+                                    if(destino == 4){
+                                        System.out.println("Se dirige a: Montevideo");
+                                    }
+
+                                    reserva.convertirOrigen();
+                                    reserva.convertirDestino();
 
                                     /// CANTIDAD ACOMPAÑANTES.
                                     reserva.putCantAcompañantes();
@@ -113,11 +142,9 @@ public class Main {
                                     reserva.selecAvion();
 
                                     /// OBTENIENDO DISTANCIA.
-
                                     System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
                                     System.out.println("" + distancia);
-
 
                                     reserva.pasarValores();
 
@@ -131,9 +158,12 @@ public class Main {
                                     System.out.println("SALIR");
                                     salir = true;
                                     break;
+                    case 3:
+                        System.out.println("Cancelar Reserva");
+                        break;
 
                         default:
-                            System.out.println("Las opciones son 1 o 2");
+                            System.out.println("Las opciones son 1,2 o 3");
                             }
 
                 }catch(InputMismatchException ex) {
@@ -143,4 +173,6 @@ public class Main {
         }
     }
 }
+
+
 

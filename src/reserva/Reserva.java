@@ -3,6 +3,7 @@ package reserva;
 import com.company.Usuario;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Reserva {
@@ -66,7 +67,7 @@ public class Reserva {
 
 
     ///---------------------------------------------------------------------------
-     public void agregarUsuarios(Usuario u){
+    public void agregarUsuarios(Usuario u){
         listaUsuarios.add(u);
     }
 
@@ -86,27 +87,87 @@ public class Reserva {
 
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
-
+///---------------------------------------------------------------------------------------------------------------------
     //2) SELECCIONAR DESTINO Y ORIGEN.
-
     public int selecOrigen(){
-        mostrarLugares();
-        int valorOrigen=0;
-        System.out.println("Ingrese el origen");
-        valorOrigen = reader.nextInt();
 
+        int check=0;
+        int valorOrigen=0;
+
+        while(check == 0){
+            mostrarLugares();
+            System.out.println("Ingrese el origen");
+            valorOrigen = reader.nextInt();
+            if (valorOrigen <1 || valorOrigen >4){
+                check =0;
+                System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+            }
+            else {
+                check =1;
+            }
+        }
         return valorOrigen;
     }
 
-    public int selecDestino(){
-        mostrarLugares();
-        int valorDestino=0;
-        System.out.println("Ingrese el destino");
-        valorDestino = reader.nextInt();
+    public void convertirOrigen(){
+        int takeOrigen = selecOrigen();
 
+        if(takeOrigen == 1){
+            this.origen = Lugares.BuenoAires;
+        }
+        if(takeOrigen == 2){
+            this.origen = Lugares.Santiago;
+        }
+        if(takeOrigen == 3){
+            this.origen = Lugares.Cordoba;
+        }
+        if(takeOrigen == 4){
+            this.origen = Lugares.Montevideo;
+        }
+
+    }
+
+    public int selecDestino(){
+        int check=0;
+        int valorDestino=0;
+
+        while(check == 0){
+            mostrarLugares();
+            System.out.println("Ingrese el destino");
+            valorDestino = reader.nextInt();
+            if (valorDestino <1 || valorDestino >4){
+                check =0;
+                System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+            }
+            else {
+                check =1;
+            }
+        }
         return valorDestino;
     }
 
+
+    /// CONVERTIDOR DESTINO lo que hace es tranformar el INT ingresado en el primer metodo (el de arriba), en el enum correspondiente.
+
+    public void convertirDestino(){
+        int takeDestino = selecDestino();
+
+        if(takeDestino == 1){
+            this.destino = Lugares.BuenoAires;
+        }
+        if(takeDestino == 2){
+            this.destino = Lugares.Santiago;
+        }
+        if(takeDestino == 3){
+            this.destino = Lugares.Cordoba;
+        }
+        if(takeDestino == 4){
+            this.destino = Lugares.Montevideo;
+        }
+
+    }
+
+///---------------------------------------------------------------------------------------------------------------------
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.
     public int putCantAcompañantes(){
         int check=0;
@@ -124,16 +185,14 @@ public class Reserva {
                 System.out.println("Numero, invalido, la cantidad maxima es 7");
                 check=0;
             }
-
         }
-
         return this.cantAcompañantes;
     }
 
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
 
     public int selecAvion(){
-        /// los aviones se muestran en el main. Ahi esta el metodo.
+        /// Los aviones se muestran en el main. Ahi esta el metodo.
         int selecAvion=0;
         int check=0;
 
@@ -160,7 +219,7 @@ public class Reserva {
 
 
     //5) MOSTRAR COSTO TOTAL.
-
+/*
     public int obtenerDistancia(){
        //-1 si no existe destino.
 
@@ -194,6 +253,62 @@ public class Reserva {
 
         return distancia;
     }
+*/
+
+    public int obtenerDistancia(){
+        //-1 si no existe destino.
+
+        int distancia = 0;
+
+        if(origen.equals(Lugares.BuenoAires)){
+            if(destino.equals(Lugares.Cordoba))
+                distancia = 695;
+            if(destino.equals(Lugares.Santiago))
+                distancia = 1400;
+            if(destino.equals(Lugares.Montevideo))
+                distancia = 950;
+            else
+                distancia = -1;
+        }
+        else if(origen.equals(Lugares.Cordoba)){
+            if(destino.equals(Lugares.Montevideo))
+                distancia = 1190;
+            if(destino.equals(Lugares.Santiago))
+                distancia = 1050;
+        }
+        else if(origen.equals(Lugares.Montevideo)){
+            if(destino.equals(Lugares.Santiago))
+                distancia = 2100;
+            else
+                distancia = -1;
+        }
+        else if(origen.equals(Lugares.Santiago)){
+            distancia = -1;
+        }
+
+        return distancia;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
