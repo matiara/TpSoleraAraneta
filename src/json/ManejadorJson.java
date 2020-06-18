@@ -33,14 +33,14 @@ public class ManejadorJson
 
             this.data = (JSONObject) obj;
 
-            JSONArray allUsuarios= (JSONArray) this.data.get("usuarios");
-          ///  JSONArray allAviones= (JSONArray) this.data.get("aviones");
-          ///  JSONArray allReservas= (JSONArray) this.data.get("reservas");
+            JSONArray allUsuarios = (JSONArray) this.data.get("usuarios");
+            JSONArray allAviones = (JSONArray) this.data.get("aviones");
+            JSONArray allReservas = (JSONArray) this.data.get("reservas");
 
-
+            System.out.println("mati: " + allReservas);
             empresa.inicializarUsuarios(allUsuarios);
-            ///empresa.inicializarAviones(allAviones);
-           /// empresa.inicializarReservas(allReservas);
+            empresa.inicializarAviones(allAviones);
+            empresa.inicializarReservas(allReservas);
 
 
             System.out.println("Informacion en el sistema: " + this.data);
@@ -53,6 +53,3 @@ public class ManejadorJson
             e.printStackTrace();
         }
     }
-
-}
-
