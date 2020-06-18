@@ -1,4 +1,4 @@
-ackage main;
+package main;
 import clasesextra.Bronze;
 import clasesextra.Gold;
 import clasesextra.Silver;
@@ -88,7 +88,7 @@ public class Main {
                         Usuario nuevoUsuario = new Usuario();
                         nuevoUsuario.crearUsuario();
                         empresa.agregarUsuario(nuevoUsuario);
-                        manejador.writeUser(nuevoUsuario);
+                       // manejador.writeUser(nuevoUsuario);
                         salir = true;
                         break;
 
