@@ -132,7 +132,7 @@ public class Reserva {
             mostrarLugares();
             System.out.println("Ingrese el origen");
             valorOrigen = reader.nextInt();
-            if (valorOrigen <1 || valorOrigen >4){
+            if (valorOrigen <1 || valorOrigen >=5){
                 check =0;
                 System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
             }
@@ -268,25 +268,43 @@ public class Reserva {
                 distancia = 1400;
             if(destino.equals(Lugares.Montevideo))
                 distancia = 950;
-            /*else
-                distancia = -1;*/
         }
-        else if(origen.equals(Lugares.Cordoba)){
-            if(destino.equals(Lugares.Montevideo))
-                distancia = 1190;
-            if(destino.equals(Lugares.Santiago))
+        if(origen.equals(Lugares.Cordoba)){
+            if(destino.equals(Lugares.BuenoAires)){
+                distancia = 695;
+            }
+            if(destino.equals(Lugares.Santiago)){
                 distancia = 1050;
-        }
-        else if(origen.equals(Lugares.Montevideo)){
-            if(destino.equals(Lugares.Santiago))
-                distancia = 2100;
-            else
-                distancia = -1;
-        }
-        else if(origen.equals(Lugares.Santiago)){
-            distancia = -1;
+            }
+            if(destino.equals(Lugares.Montevideo)){
+                distancia =1190;
+            }
         }
 
+        if(origen.equals(Lugares.Santiago)){
+            if(destino.equals(Lugares.BuenoAires)){
+                distancia =1400;
+            }
+            if(destino.equals(Lugares.Cordoba));
+            {
+                distancia =1050;
+            }
+            if(destino.equals(Lugares.Montevideo)){
+                distancia =2100;
+            }
+        }
+
+        if(origen.equals(Lugares.Montevideo)){
+            if(destino.equals(Lugares.BuenoAires)){
+                distancia=950;
+            }
+            if(destino.equals(Lugares.Cordoba)){
+                distancia=1190;
+            }
+            if(destino.equals(Lugares.Santiago)){
+                distancia=2100;
+            }
+        }
         return distancia;
     }
 

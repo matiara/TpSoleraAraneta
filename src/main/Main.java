@@ -92,11 +92,11 @@ public class Main {
 
                     case 2:
                         ///FECHA
-
+/*
                         reserva.indicarFecha();
                         System.out.println("La fecha indicada es: ");
                         System.out.println("" + reserva.getFecha());
-
+*/
 
 
                         /// ORIGEN - DESTINO
