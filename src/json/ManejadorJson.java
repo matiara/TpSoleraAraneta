@@ -15,7 +15,6 @@ import org.json.simple.parser.ParseException;
 
 
 
-import com.company.TipoAvion;
 import com.company.Usuario;
 import reserva.Lugares;
 import reserva.Reserva;
@@ -35,11 +34,13 @@ public class ManejadorJson
             this.data = (JSONObject) obj;
 
             JSONArray allUsuarios= (JSONArray) this.data.get("usuarios");
+         ///   JSONArray allAviones= (JSONArray) this.data.get("aviones");
+            JSONArray allReservas= (JSONArray) this.data.get("reservas");
+
 
             empresa.inicializarUsuarios(allUsuarios);
-            ///empesa.escribiraviones   /// para hacer
-            ///empesa.escribirreserva
-
+       ///     empresa.inicializarAviones(allAviones);
+            empresa.inicializarReservas(allReservas);
 
 
             System.out.println("Informacion en el sistema: " + this.data);
@@ -52,6 +53,8 @@ public class ManejadorJson
             e.printStackTrace();
         }
     }
+
+
 
 
     public void writeUser(Usuario newUser)
@@ -83,8 +86,8 @@ public class ManejadorJson
         newReservaObject.put("SelecAvion", newReserva.getSelecAvion());
         newReservaObject.put("CostoTotal", newReserva.getCostoTotal());
         newReservaObject.put("Dni", newReserva.getDni());
-        newReservaObject.put("origen", newReserva.getFecha());
-        newReservaObject.put("destino", newReserva.selecDestino());
+        newReservaObject.put("origen", newReserva.getOrigen());
+        newReservaObject.put("destino", newReserva.getDestino());
 
 
         try (FileWriter file = new FileWriter("src/json/data.json")) {
@@ -100,4 +103,6 @@ public class ManejadorJson
         }
     }
 
+
 }
+
