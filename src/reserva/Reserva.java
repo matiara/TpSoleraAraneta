@@ -105,15 +105,19 @@ public class Reserva {
 
             if(valorOrigen == 1){
                 System.out.println("Lugar de origen: Buenos Aires");
+                this.origen = Lugares.BuenoAires;
             }
             if(valorOrigen == 2){
                 System.out.println("Lugar de origen: Santiago");
+                this.origen = Lugares.Santiago;
             }
             if(valorOrigen == 3){
                 System.out.println("Lugar de origen: Cordoba");
+                this.origen = Lugares.Cordoba;
             }
             if(valorOrigen == 4){
                 System.out.println("Lugar de origen: Montevideo");
+                this.origen = Lugares.Montevideo;
             }
 
             else {
@@ -139,16 +143,20 @@ public class Reserva {
 
             if(valorDestino == 1){
                 System.out.println("Se dirige a: Buenos aires");
+                this.destino = Lugares.BuenoAires;
             }
 
             if(valorDestino == 2){
                 System.out.println("Se dirige a: Chile");
+                this.destino = Lugares.Santiago;
             }
             if(valorDestino == 3){
                 System.out.println("Se dirige a: Cordoba");
+                this.destino = Lugares.Cordoba;
             }
             if(valorDestino == 4){
                 System.out.println("Se dirige a: Montevideo");
+                this.destino = Lugares.Montevideo;
             }
 
             else {
