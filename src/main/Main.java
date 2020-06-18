@@ -1,4 +1,4 @@
-ackage main;
+package main;
 import clasesextra.Bronze;
 import clasesextra.Gold;
 import clasesextra.Silver;
