@@ -1,108 +1,100 @@
-package json;
+package com.company;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.company.Empresa;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-
-
-import com.company.Usuario;
 import reserva.Lugares;
 import reserva.Reserva;
 
-public class ManejadorJson
-{
-    private JSONObject data;
-
-    public ManejadorJson(Empresa empresa){
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("src/json/data.json"))
-        {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
-
-            this.data = (JSONObject) obj;
-
-            JSONArray allUsuarios= (JSONArray) this.data.get("usuarios");
-         ///   JSONArray allAviones= (JSONArray) this.data.get("aviones");
-            JSONArray allReservas= (JSONArray) this.data.get("reservas");
+import java.util.HashMap;
 
 
-            empresa.inicializarUsuarios(allUsuarios);
-       ///     empresa.inicializarAviones(allAviones);
-            empresa.inicializarReservas(allReservas);
+public class Empresa {
+    private String nombre;
+    private HashMap<Integer, Usuario> mapUsuarios;
+    private HashMap<String, Avion> mapAviones;
+    private HashMap<Integer, Reserva> mapReservas;
+
+    /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.
+
+    public Empresa(String nombre){
+        this.nombre = nombre;
+        this.mapUsuarios = new HashMap<Integer,Usuario>();
+        this.mapAviones = new HashMap<String, Avion>();
+        this.mapReservas = new HashMap<Integer, Reserva>();
+    }
+    public void agregarUsuario(Usuario u){
+        mapUsuarios.put(u.getDni(),u);
+    }
+    public void agregarAvionn(Avion t){ mapAviones.put(t.getTipoAvion(),t); }
+    public void agregarReserva(Reserva r){ mapReservas.put(r.getDni(),r); }
 
 
-            System.out.println("Informacion en el sistema: " + this.data);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void mostrarUsuarios(){
+        System.out.println(mapUsuarios.keySet());
+        System.out.println(mapUsuarios.values());
     }
 
 
 
+    public void inicializarUsuarios(JSONArray allUsuarios){
 
-    public void writeUser(Usuario newUser)
-    {
-        JSONObject newUserObject = new JSONObject();
-        newUserObject.put("nombre", newUser.getNombre());
-        newUserObject.put("apellido", newUser.getApellido());
-        newUserObject.put("edad", newUser.getEdad());
-        newUserObject.put("dni", newUser.getDni());
+        for (int i = 0; i < allUsuarios.size(); i++) {
 
-        try (FileWriter file = new FileWriter("src/json/data.json")) {
+            JSONObject usuario = (JSONObject) allUsuarios.get(i);
+            Usuario e = new Usuario(usuario.get("nombre").toString(),usuario.get("apellido").toString(), Integer.parseInt(usuario.get("edad").toString()),Integer.parseInt(usuario.get("dni").toString()));
+            agregarUsuario(e);
 
-            JSONArray currentUsers = (JSONArray) this.data.get("usuarios");
-            currentUsers.add(newUserObject);
-            this.data.replace("usuarios", currentUsers);
-            file.write(this.data.toJSONString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
+   /* public void inicializarAviones(JSONArray allAviones){
 
-    public void writeReserva(Reserva newReserva)
-    {
-        JSONObject newReservaObject = new JSONObject();
-        newReservaObject.put("fecha" , newReserva.getFecha());
-        newReservaObject.put("cantAcompañates", newReserva.getCantAcompañantes());
-        newReservaObject.put("SelecAvion", newReserva.getSelecAvion());
-        newReservaObject.put("CostoTotal", newReserva.getCostoTotal());
-        newReservaObject.put("Dni", newReserva.getDni());
-        newReservaObject.put("origen", newReserva.getOrigen());
-        newReservaObject.put("destino", newReserva.getDestino());
+        for (int i = 0; i < allAviones.size(); i++) {
 
-
-        try (FileWriter file = new FileWriter("src/json/data.json")) {
-
-            JSONArray currentReserva = (JSONArray) this.data.get("reservas");
-            currentReserva.add(newReserva);
-            this.data.replace("reservas", currentReserva);
-            file.write(this.data.toJSONString());
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            JSONObject avion= (JSONObject) allAviones.get(i);
+            Avion t = new Avion(Float.parseFloat(avion.get("capConbustible").toString()),Float.parseFloat(avion.get("Costokm").toString()),Integer.parseInt(avion.get("maxCapacity").toString()),Float.parseFloat(avion.get("velMaxima").toString()),Motor.valueOf(avion.get("motor").toString()),avion.get("tipoAvion").toString());
+            agregarAvionn(t);
         }
+    }*/
+
+    /*public void inicializarReservas(JSONArray allReservas){
+
+        for (int i = 0; i < allReservas.size(); i++) {
+
+            JSONObject reserva = (JSONObject) allReservas.get(i);
+            Reserva r = new Reserva(Integer.parseInt(reserva.get("fecha").toString()),Lugares.valueOf(reserva.get("origen").toString()),Lugares.valueOf(reserva.get("destino").toString()),Integer.parseInt(reserva.get("canAcompañantes").toString()),Integer.parseInt(reserva.get("selecAvion").toString()),Float.parseFloat(reserva.get("costoTotal").toString()),Integer.parseInt(reserva.get("dni").toString()));
+            agregarReserva(r);
+
+        }
+    }*/
+
+
+
+
+
+    ///funcion para how to convert from jsonarray to arraylist(aviones)
+    ///funcion para how to convert from jsonarray to hashmap(reserva)
+
+
+    /*
+    public void agregarAvion(Avion avion){
+        listaAviones.add(avion);
     }
 
+    public void mostrarArregloAvion(){
+        int cont=0;
+        for(int i=0;i<Avion.size();i++){
+            System.out.println("Nº" +cont + Avion.get(i).toString());
+            cont++;
+        }
+    }*/
+
+    public void generarReserva(Usuario usuario, Reserva reserva){
+        mapReservas.put(usuario.getDni(),reserva);
+    }
+
+    public void mostrarReservas(){
+        mapReservas.get(mapUsuarios.keySet());
+    }
 
 }
 
