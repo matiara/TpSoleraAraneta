@@ -39,7 +39,7 @@ public class ManejadorJson
 
             System.out.println("mati: " + allReservas);
             empresa.inicializarUsuarios(allUsuarios);
-            //empresa.inicializarAviones(allAviones);
+            empresa.inicializarAviones(allAviones);
             empresa.inicializarReservas(allReservas);
 
 
@@ -51,6 +51,51 @@ public class ManejadorJson
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
+        }
+    }
+    public void writeUser(Usuario newUser)
+    {
+        JSONObject newUserObject = new JSONObject();
+        newUserObject.put("nombre", newUser.getNombre());
+        newUserObject.put("apellido", newUser.getApellido());
+        newUserObject.put("edad", newUser.getEdad());
+        newUserObject.put("dni", newUser.getDni());
+
+        try (FileWriter file = new FileWriter("src/json/data.json")) {
+
+            JSONArray currentUsers = (JSONArray) this.data.get("usuarios");
+                currentUsers.add(newUserObject);
+                this.data.replace("usuarios", currentUsers);
+                file.write(this.data.toJSONString());
+                file.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+
+    public void writeReserva(Reserva newReserva)
+    {
+        JSONObject newReservaObject = new JSONObject();
+        newReservaObject.put("fecha" , newReserva.getFecha());
+        newReservaObject.put("cantAcompañates", newReserva.getCantAcompañantes());
+        newReservaObject.put("SelecAvion", newReserva.getSelecAvion());
+        newReservaObject.put("CostoTotal", newReserva.getCostoTotal());
+        newReservaObject.put("Dni", newReserva.getDni());
+        newReservaObject.put("origen", newReserva.getOrigen());
+        newReservaObject.put("destino", newReserva.getDestino());
+
+
+        try (FileWriter file = new FileWriter("src/json/data.json")) {
+
+            JSONArray currentReserva = (JSONArray) this.data.get("reservas");
+            currentReserva.add(newReserva);
+            this.data.replace("reservas", currentReserva);
+            file.write(this.data.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
         }
     }
 }
