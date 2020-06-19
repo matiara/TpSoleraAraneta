@@ -137,7 +137,7 @@ public class Main {
 
                 }catch(InputMismatchException ex) {
                     System.err.println("Debes introducir un numero");
-                    scanner.next();
+                    salir = true;
             }
         }
     }

@@ -28,11 +28,6 @@ public class Reserva {
         this.listaUsuarios = new ArrayList<>();
         this.dni = dni;
     }
-/*
-    public Reserva(){
-
-    }
-*/
 
     Scanner reader = new Scanner(System.in);
 
@@ -103,23 +98,29 @@ public class Reserva {
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
 
     public void indicarFecha(){
-
+/*
         Date fecha = new Date();
         System.out.println(fecha);
+        */
 
-/*
         Calendar c1 = GregorianCalendar.getInstance();
-        System.out.println("Fecha actual: " +c1.getTime().toLocaleString());
+       /*
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2003, 8,7);
+        Date d = calendar.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println(sdf.format(d));
+        */
         SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Fecha actual: " +fecha.format(c1.getTime()));
         System.out.println("Ingrese la fecha que quiere realizar el vuelo");
         String sDate1 = reader.next();
         try {
             Date date1 = fecha.parse(sDate1);
-            System.out.println("A usted le gustaria reservar en la fecha: " + date1);
+            System.out.println("A usted le gustaria reservar en la fecha: " + fecha.format(date1));
         } catch (ParseException e) {
             System.err.println("Error al ingresar la fecha");
         }
-*/
 
     }
 
@@ -374,8 +375,6 @@ public class Reserva {
 
             }
 
+            }
+        }
 
-
-    }
-
-}
