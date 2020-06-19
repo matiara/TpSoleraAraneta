@@ -99,10 +99,6 @@ public class Reserva {
     }
 
 
-
-
-
-
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
 

@@ -58,16 +58,8 @@ public class Main {
 
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
-        int opcion2=0;
-        int opcion3=0;
-        boolean salir = false;
 
-        /*
-        reserva.toString();
-        reserva.toString();
-        reserva.pasarValores();
-        reserva.toString();
-        */
+        boolean salir = false;
 
         while(!salir){
             System.out.println("1 | Registrarse");

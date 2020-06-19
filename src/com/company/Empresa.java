@@ -46,7 +46,7 @@ public class Empresa {
 
         }
     }
-    /*
+
    public void inicializarAviones(JSONArray allAviones){
 
         for (int i = 0; i < allAviones.size(); i++) {
@@ -55,7 +55,7 @@ public class Empresa {
            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString());
             agregarAvionn(t);
         }
-    }*/
+    }
 
     public void inicializarReservas(JSONArray allReservas){
 
@@ -67,10 +67,6 @@ public class Empresa {
 
         }
     }
-
-
-
-
 
     ///funcion para how to convert from jsonarray to arraylist(aviones)
     ///funcion para how to convert from jsonarray to hashmap(reserva)

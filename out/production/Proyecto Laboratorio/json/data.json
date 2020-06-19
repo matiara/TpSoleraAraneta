@@ -9,14 +9,6 @@
       "kmCosto": 350
     },
     {
-      "tipoAvion": "gold",
-      "maxVelocidad": 650,
-      "tipoPropulsion:": "pistones",
-      "maxCapacidad":8,
-      "capConbustible": 800,
-      "kmCosto": 400
-    },
-    {
       "tipoAvion": "silver",
       "maxVelocidad": 500,
       "tipoPropulsion": "helice",
@@ -63,3 +55,4 @@
   ]
 
 }
+
