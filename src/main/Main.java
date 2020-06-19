@@ -130,6 +130,9 @@ public class Main {
                     case 3:
                         System.out.println("Cancelar Reserva");
                         System.out.println("LA RESERVA ES: "+ reserva.toString());
+
+                        ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
+
                         break;
 
                         default:

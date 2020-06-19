@@ -132,9 +132,16 @@ public class Reserva {
             mostrarLugares();
             System.out.println("Ingrese el origen");
             valorOrigen = reader.nextInt();
-            if (valorOrigen <1 || valorOrigen >=5){
+            if (valorOrigen <1){
                 check =0;
                 System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+                valorOrigen = reader.nextInt();
+            }
+
+            if(valorOrigen >=5){
+                check =0;
+                System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+                valorOrigen = reader.nextInt();
             }
 
             if(valorOrigen == 1){
@@ -173,6 +180,7 @@ public class Reserva {
             if (valorDestino <1 || valorDestino >=5){
                 check =0;
                 System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+                valorDestino = reader.nextInt();
             }
 
             if(valorDestino == 1){
@@ -308,7 +316,26 @@ public class Reserva {
         return distancia;
     }
 
-    ///funcion calcular costo
+
+
+
+    /*public int calcularCosto(){
+        return ( Distancia() * ipoAvion.costoKm() ) + ( pasajeros.size() * 3500 ) + tipoAvion.getTarifa();
+    }*/
+    /*
+    public void calcularCosto(){
+        /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
+        ///this.costoTotal = (obtenerDistancia() * /*tipo avion X COSTOKM */ /*) + (cantAcompañantes + 1 * 3500) + (/*tipo Avion */ /*ge)
+    }*/
+
+
+
+
+
+
+
+
+
 
 
     /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
