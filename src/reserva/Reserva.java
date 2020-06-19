@@ -107,6 +107,11 @@ public class Reserva {
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
 
     public void indicarFecha(){
+
+        Date fecha = new Date();
+        System.out.println(fecha);
+
+/*
         Calendar c1 = GregorianCalendar.getInstance();
         System.out.println("Fecha actual: " +c1.getTime().toLocaleString());
         SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -118,6 +123,8 @@ public class Reserva {
         } catch (ParseException e) {
             System.err.println("Error al ingresar la fecha");
         }
+*/
+
     }
 
 
@@ -241,6 +248,7 @@ public class Reserva {
         while(check==0){
             System.out.println("Seleccione el avion que desea");
             selecAvion = reader.nextInt();
+            System.out.println("Usted selecciono el avion:" + selecAvion);
             check = 1;
 
             if(selecAvion <0){
@@ -251,7 +259,8 @@ public class Reserva {
                 System.out.println("El maximo es 5");
                 check=0;
             }
-            this.cantAcompañantes = selecAvion;
+            this.selecAvion = selecAvion;
+
             System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
             /// validaciones en condicion de cantidad de pasajeros en total.
 
@@ -317,25 +326,14 @@ public class Reserva {
     }
 
 
-
-
     /*public int calcularCosto(){
         return ( Distancia() * ipoAvion.costoKm() ) + ( pasajeros.size() * 3500 ) + tipoAvion.getTarifa();
     }*/
     /*
     public void calcularCosto(){
         /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
-        ///this.costoTotal = (obtenerDistancia() * /*tipo avion X COSTOKM */ /*) + (cantAcompañantes + 1 * 3500) + (/*tipo Avion */ /*ge)
+        this.costoTotal = (obtenerDistancia() * /*tipo avion X COSTOKM */ /*) + (cantAcompañantes + 1 * 3500) + (/*tipo Avion */ /*ge)
     }*/
-
-
-
-
-
-
-
-
-
 
 
     /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
@@ -347,6 +345,41 @@ public class Reserva {
         System.out.println("Cantidad de acompañantes: " + this.cantAcompañantes);
         System.out.println("Avion Seleccionado: " + this.selecAvion);
         System.out.println("Costo total: ");
+    }
+
+    public void confirmarReserva(){
+            int confirmar=0;
+            int check=0;
+
+            while (check == 0){
+            System.out.println("Los datos de la reserva son:");
+            mostrarValores();
+
+            System.out.println("¿Confirmar Reserva?");
+            System.out.println("1 - SI");
+            System.out.println("2 - NO");
+            confirmar = reader.nextInt();
+
+
+            if (confirmar == 1){
+                /// aca tiene que pasar toda la reserva al MAP RESERVAS
+                System.out.println("Su reserva a sido cargada");
+                check = 1;
+            }
+            if(confirmar == 2){
+                System.out.println("Acaba de cancelar la reserva");
+                check = 1;
+            }
+
+            if (confirmar <1 || confirmar > 2){
+                check = 0;
+                System.out.println("Valor incorrecto, vuelva a ingresar el valor");
+            }
+
+            }
+
+
+
     }
 
 }

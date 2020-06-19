@@ -39,7 +39,7 @@ public class ManejadorJson
 
             System.out.println("mati: " + allReservas);
             empresa.inicializarUsuarios(allUsuarios);
-            empresa.inicializarAviones(allAviones);
+            //empresa.inicializarAviones(allAviones);
             empresa.inicializarReservas(allReservas);
 
 

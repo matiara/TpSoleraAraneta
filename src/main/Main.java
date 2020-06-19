@@ -92,6 +92,9 @@ public class Main {
 
                     case 2:
                         ///FECHA
+
+                        reserva.indicarFecha();
+
 /*
                         reserva.indicarFecha();
                         System.out.println("La fecha indicada es: ");
@@ -123,13 +126,14 @@ public class Main {
                                     System.out.println("" + distancia);
 
                                     ///MOSTRANDO LOS DATOS DE LA RESERVA
-                                    reserva.mostrarValores();
+                                    reserva.confirmarReserva();
 
                                     salir = true;
                                     break;
                     case 3:
                         System.out.println("Cancelar Reserva");
                         System.out.println("LA RESERVA ES: "+ reserva.toString());
+                        reserva.mostrarListaUsuarios();
 
                         ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
 

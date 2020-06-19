@@ -46,15 +46,16 @@ public class Empresa {
 
         }
     }
+    /*
    public void inicializarAviones(JSONArray allAviones){
 
         for (int i = 0; i < allAviones.size(); i++) {
 
             JSONObject avion= (JSONObject) allAviones.get(i);
-            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString());
+           Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString());
             agregarAvionn(t);
         }
-    }
+    }*/
 
     public void inicializarReservas(JSONArray allReservas){
 
