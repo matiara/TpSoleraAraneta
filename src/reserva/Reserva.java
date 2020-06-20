@@ -104,7 +104,7 @@ public class Reserva {
         */
 
         Calendar c1 = GregorianCalendar.getInstance();
-       /*
+        /*
         Calendar calendar = Calendar.getInstance();
         calendar.set(2003, 8,7);
         Date d = calendar.getTime();
@@ -245,11 +245,10 @@ public class Reserva {
         while(check==0){
             System.out.println("Seleccione el avion que desea");
             selecAvion = reader.nextInt();
-            System.out.println("Usted selecciono el avion:" + selecAvion);
             check = 1;
 
             if(selecAvion <0){
-                System.out.println("Numero invalido");
+                System.out.println("Numero invalido, vuelva a intentarlo");
                 check=0;
             }
             if(selecAvion >5){
@@ -258,7 +257,10 @@ public class Reserva {
             }
             this.selecAvion = selecAvion;
 
-            System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
+            if(check == 1){
+                System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
+            }
+
             /// validaciones en condicion de cantidad de pasajeros en total.
 
         }
@@ -356,7 +358,6 @@ public class Reserva {
             System.out.println("1 - SI");
             System.out.println("2 - NO");
             confirmar = reader.nextInt();
-
 
             if (confirmar == 1){
                 /// aca tiene que pasar toda la reserva al MAP RESERVAS

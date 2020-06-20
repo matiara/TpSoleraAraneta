@@ -22,19 +22,21 @@ public class Empresa {
         this.mapAviones = new HashMap<String, Avion>();
         this.mapReservas = new HashMap<Integer, Reserva>();
     }
+
     public void agregarUsuario(Usuario u){
         mapUsuarios.put(u.getDni(),u);
     }
-    public void agregarAvionn(Avion t){ mapAviones.put(t.getTipoAvion(),t); }
-    public void agregarReserva(Reserva r){ mapReservas.put(r.getDni(),r); }
-
+    public void agregarAvionn(Avion t){
+        mapAviones.put(t.getTipoAvion(),t);
+    }
+    public void agregarReserva(Reserva r){
+        mapReservas.put(r.getDni(),r);
+    }
 
     public void mostrarUsuarios(){
         System.out.println(mapUsuarios.keySet());
         System.out.println(mapUsuarios.values());
     }
-
-
 
     public void inicializarUsuarios(JSONArray allUsuarios){
 
@@ -71,19 +73,6 @@ public class Empresa {
     ///funcion para how to convert from jsonarray to arraylist(aviones)
     ///funcion para how to convert from jsonarray to hashmap(reserva)
 
-
-    /*
-    public void agregarAvion(Avion avion){
-        listaAviones.add(avion);
-    }
-
-    public void mostrarArregloAvion(){
-        int cont=0;
-        for(int i=0;i<Avion.size();i++){
-            System.out.println("Nº" +cont + Avion.get(i).toString());
-            cont++;
-        }
-    }*/
 
     public void generarReserva(Usuario usuario, Reserva reserva){
         mapReservas.put(usuario.getDni(),reserva);

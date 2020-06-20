@@ -34,6 +34,8 @@ public class Main {
 
         reserva.mostrarListaUsuarios();
 
+
+
         ///CREANDO AVIONES
         ///--------------Bronce
        /* Bronze bronze1 = new Bronze(1000,150,3,400, Motor.reaccion);
@@ -47,7 +49,7 @@ public class Main {
         Gold gold2 = new Gold(1500,350,8,800,Motor.pistones);*/
         ///-------------------------------------------------------------------------------------------------------------
         ///AGREGANDO AVIONES A EL ARREGLO
-      /*  empresa.agregarAvion(bronze1);
+      /*empresa.agregarAvion(bronze1);
         empresa.agregarAvion(bronze2);
         empresa.agregarAvion(silver1);
         empresa.agregarAvion(silver2);
@@ -78,7 +80,7 @@ public class Main {
                         Usuario nuevoUsuario = new Usuario();
                         nuevoUsuario.crearUsuario();
                         empresa.agregarUsuario(nuevoUsuario);
-                       // manejador.writeUser(nuevoUsuario);
+                        manejador.writeUser(nuevoUsuario);
                         salir = true;
                         break;
 
@@ -86,12 +88,6 @@ public class Main {
                         ///FECHA
 
                         reserva.indicarFecha();
-
-/*
-                        reserva.indicarFecha();
-                        System.out.println("La fecha indicada es: ");
-                        System.out.println("" + reserva.getFecha());
-*/
 
 
                         /// ORIGEN - DESTINO
@@ -123,6 +119,9 @@ public class Main {
                                     salir = true;
                                     break;
                     case 3:
+                        System.out.println("mostrando usuarios:");
+                        empresa.mostrarUsuarios();
+
                         System.out.println("Cancelar Reserva");
                         System.out.println("LA RESERVA ES: "+ reserva.toString());
                         reserva.mostrarListaUsuarios();
