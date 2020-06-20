@@ -30,7 +30,7 @@ public class Main {
         // Crear menu aparte
 
         ///CREANDO RESERVA
-        Reserva reserva = new Reserva(12/5/2018,null,null, 0,0,0, 0);
+        Reserva reserva = new Reserva("12/5/2018",null,null, 0,0,0, 0);
 
         reserva.mostrarListaUsuarios();
 

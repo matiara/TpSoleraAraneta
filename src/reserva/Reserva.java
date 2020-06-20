@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.spi.CalendarDataProvider;
 
 public class Reserva {
-    private int fecha;
+    private String fecha;
     private Lugares origen;
     private Lugares destino;
     private int cantAcompañantes;
@@ -18,7 +18,7 @@ public class Reserva {
     private ArrayList<Usuario> listaUsuarios;
     private int dni;
 
-    public Reserva(int fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, float costoTotal,int dni){
+    public Reserva(String fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, float costoTotal,int dni){
         this.fecha = fecha;
         this.origen = origen;
         this.destino = destino;
@@ -41,7 +41,7 @@ public class Reserva {
         return destino;
     }
 
-    public int getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
@@ -117,6 +117,7 @@ public class Reserva {
         try {
             Date date1 = fecha.parse(sDate1);
             System.out.println("A usted le gustaria reservar en la fecha: " + fecha.format(date1));
+            this.fecha = sDate1;
         } catch (ParseException e) {
             System.err.println("Error al ingresar la fecha");
         }
@@ -338,7 +339,7 @@ public class Reserva {
     /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
         public void mostrarValores(){
         System.out.println("Mostrando los datos de la reserva");
-        System.out.println("Fecha: ");
+        System.out.println("Fecha: " + this.fecha);
         System.out.println("Origen: " + this.origen);
         System.out.println("Destino: " + this.destino);
         System.out.println("Cantidad de acompañantes: " + this.cantAcompañantes);
