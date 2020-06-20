@@ -236,7 +236,7 @@ public class Reserva {
 
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
 
-    public int selecAvion(){
+    public void elegirAvion(){
         /// Los aviones se muestran en el main. Ahi esta el metodo.
         int selecAvion=0;
         int check=0;
@@ -245,6 +245,7 @@ public class Reserva {
             System.out.println("Seleccione el avion que desea");
             selecAvion = reader.nextInt();
             check = 1;
+
 
             if(selecAvion <0){
                 System.out.println("Numero invalido, vuelva a intentarlo");
@@ -261,9 +262,9 @@ public class Reserva {
             }
 
             /// validaciones en condicion de cantidad de pasajeros en total.
+            this.selecAvion = selecAvion;
 
         }
-        return selecAvion;
     }
 
 
@@ -359,7 +360,11 @@ public class Reserva {
             confirmar = reader.nextInt();
 
             if (confirmar == 1){
+
+
                 /// aca tiene que pasar toda la reserva al MAP RESERVAS
+
+
                 System.out.println("Su reserva a sido cargada");
                 check = 1;
             }

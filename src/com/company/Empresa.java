@@ -13,7 +13,6 @@ public class Empresa {
     private String nombre;
     private HashMap<Integer, Usuario> mapUsuarios;
     private ArrayList<Avion>listaAviones;
-    //private HashMap<String, Avion> mapAviones;
     private HashMap<Integer, Reserva> mapReservas;
 
     /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.

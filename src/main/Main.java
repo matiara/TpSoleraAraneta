@@ -106,9 +106,8 @@ public class Main {
                                     System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
 
                                     /// SELECCIONAR AVION.
-
                                     empresa.mostrarAviones();
-                                    reserva.selecAvion();
+                                    reserva.elegirAvion();
 
                                     /// OBTENIENDO DISTANCIA.
                                     System.out.println("Obteniendo distancia");
@@ -120,7 +119,9 @@ public class Main {
 
                                     salir = true;
                                     break;
+
                     case 3:
+
                         /// MOSTRANDO USUARIOS
                         System.out.println("Mostrando usuarios: \n");
                         empresa.mostrarUsuarios();
@@ -128,19 +129,17 @@ public class Main {
                         System.out.println("Mostrando aviones");
                         empresa.mostrarAviones();
 
-
                         /// CANCELAR RESERVA
                         System.out.println("Cancelar Reserva");
                         System.out.println("LA RESERVA ES: "+ reserva.toString());
                         reserva.mostrarListaUsuarios();
-                        //// en empresa
+
                         System.out.println("Ingrese el DNI que quiere eliminar");
 
                         //empresa.eliminarReserva();
 
                         ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
-
-                        break;
+                    break;
 
                         default:
                             System.out.println("Las opciones son 1,2 o 3");
