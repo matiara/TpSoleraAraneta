@@ -30,14 +30,6 @@ public class Avion {
     }*/
 
 
-//////////////////////////////////////////////////////////////---------------------> MOSTRAR AVION
-    public void mostrarAvion(){
-        int contador=0;
-        System.out.println("Avion Nº :" + contador + " "  +tipoAvion);
-        System.out.println("Cantidad maxima pasajeros: " +sizePasajeros);
-        System.out.println("Velocidad maxima: " + velMaxima);
-    }
-
     public String getTipoAvion() {
         return tipoAvion;
     }

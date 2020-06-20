@@ -91,13 +91,26 @@ public class Empresa {
     public void eliminarReserva(Reserva r){
         mapReservas.remove(r.getDni(),r);
     }
-
+/*
    public void mostrarAviones(){
        System.out.println("MOSTRANDO AVIONES");
        for(int i=0;i<listaAviones.size();i++){
            listaAviones.get(i).mostrarAvion();
        }
-   }
+   }*/
+
+   public void mostrarAviones(){
+       int contador=1;
+       for(int i=0;i<listaAviones.size();i++){
+           System.out.println("Nº " + contador + " Avion: " + listaAviones.get(i).getTipoAvion());
+           System.out.println("Cantidad maxima de pasajeros: " + listaAviones.get(i).getSizePasajeros());
+           System.out.println("Velocidad maxima: " + listaAviones.get(i).getVelMaxima());
+           System.out.println("Costo por kilometro: " + listaAviones.get(i).getCostoXkm());
+           System.out.println("");
+           contador++;
+       }
+    }
+
 
     /*
     public void eliminarReserva(int dni){

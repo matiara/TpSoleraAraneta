@@ -107,7 +107,7 @@ public class Main {
 
                                     /// SELECCIONAR AVION.
 
-                                   /// empresa.mostrarArregloAviones();
+                                    empresa.mostrarAviones();
                                     reserva.selecAvion();
 
                                     /// OBTENIENDO DISTANCIA.
@@ -122,7 +122,7 @@ public class Main {
                                     break;
                     case 3:
                         /// MOSTRANDO USUARIOS
-                        System.out.println("Mostrando usuarios:");
+                        System.out.println("Mostrando usuarios: \n");
                         empresa.mostrarUsuarios();
                         /// MOSTRANDO AVIONES
                         System.out.println("Mostrando aviones");
