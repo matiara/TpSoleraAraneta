@@ -17,13 +17,9 @@ public class Avion {
         this.motor = motor;
         this.tipoAvion = tipoAvion;
     }
-    public Avion(){
-
-    }
 
     ///-------------------------------- GETS AND SETS ---------------------------------------------
-
-
+/*
     @Override
     public String toString() {
         return " Capacidad conbustible: " + capConbustible +
@@ -31,6 +27,15 @@ public class Avion {
                 "| Cantidad maxima Pasajeros: " + sizePasajeros +
                 "| Velocidad Maxima: " + velMaxima +
                 "| Tipo de motor: " + motor;
+    }*/
+
+
+//////////////////////////////////////////////////////////////---------------------> MOSTRAR AVION
+    public void mostrarAvion(){
+        int contador=0;
+        System.out.println("Avion Nº :" + contador + " "  +tipoAvion);
+        System.out.println("Cantidad maxima pasajeros: " +sizePasajeros);
+        System.out.println("Velocidad maxima: " + velMaxima);
     }
 
     public String getTipoAvion() {

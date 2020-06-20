@@ -5,13 +5,15 @@ import org.json.simple.JSONObject;
 import reserva.Lugares;
 import reserva.Reserva;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class Empresa {
     private String nombre;
     private HashMap<Integer, Usuario> mapUsuarios;
-    private HashMap<String, Avion> mapAviones;
+    private ArrayList<Avion>listaAviones;
+    //private HashMap<String, Avion> mapAviones;
     private HashMap<Integer, Reserva> mapReservas;
 
     /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.
@@ -19,16 +21,20 @@ public class Empresa {
     public Empresa(String nombre){
         this.nombre = nombre;
         this.mapUsuarios = new HashMap<Integer,Usuario>();
-        this.mapAviones = new HashMap<String, Avion>();
+        this.listaAviones = new ArrayList<>();
+        //this.mapAviones = new HashMap<String, Avion>();
         this.mapReservas = new HashMap<Integer, Reserva>();
     }
 
     public void agregarUsuario(Usuario u){
         mapUsuarios.put(u.getDni(),u);
     }
-    public void agregarAvionn(Avion t){
-        mapAviones.put(t.getTipoAvion(),t);
+
+    public void agregarAvion(Avion t){
+        //mapAviones.put(t.getTipoAvion(),t);
+        listaAviones.add(t);
     }
+
     public void agregarReserva(Reserva r){
         mapReservas.put(r.getDni(),r);
     }
@@ -54,8 +60,8 @@ public class Empresa {
         for (int i = 0; i < allAviones.size(); i++) {
 
             JSONObject avion= (JSONObject) allAviones.get(i);
-           Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString());
-            agregarAvionn(t);
+            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString());
+            agregarAvion(t);
         }
     }
 
@@ -82,6 +88,23 @@ public class Empresa {
         mapReservas.get(mapUsuarios.keySet());
     }
 
+    public void eliminarReserva(Reserva r){
+        mapReservas.remove(r.getDni(),r);
+    }
+
+   public void mostrarAviones(){
+       System.out.println("MOSTRANDO AVIONES");
+       for(int i=0;i<listaAviones.size();i++){
+           listaAviones.get(i).mostrarAvion();
+       }
+   }
+
+    /*
+    public void eliminarReserva(int dni){
+
+        mapReservas.remove()
+    }
+    */
 }
 
 

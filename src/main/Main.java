@@ -56,7 +56,7 @@ public class Main {
         empresa.agregarAvion(gold1);
         empresa.agregarAvion(gold2);*/
 
-        //empresa.mostrarArregloAviones();
+
 
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
@@ -77,6 +77,8 @@ public class Main {
                     case 1:
 
                         /// PROBANDO DE CREAR UN USUARIO EN DONDE SE AGREGE A EMPRESA, Y SE LO MUESTRE.
+
+                        // lo mismo pero con reserva
                         Usuario nuevoUsuario = new Usuario();
                         nuevoUsuario.crearUsuario();
                         empresa.agregarUsuario(nuevoUsuario);
@@ -119,12 +121,22 @@ public class Main {
                                     salir = true;
                                     break;
                     case 3:
-                        System.out.println("mostrando usuarios:");
+                        /// MOSTRANDO USUARIOS
+                        System.out.println("Mostrando usuarios:");
                         empresa.mostrarUsuarios();
+                        /// MOSTRANDO AVIONES
+                        System.out.println("Mostrando aviones");
+                        empresa.mostrarAviones();
 
+
+                        /// CANCELAR RESERVA
                         System.out.println("Cancelar Reserva");
                         System.out.println("LA RESERVA ES: "+ reserva.toString());
                         reserva.mostrarListaUsuarios();
+                        //// en empresa
+                        System.out.println("Ingrese el DNI que quiere eliminar");
+
+                        //empresa.eliminarReserva();
 
                         ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
 

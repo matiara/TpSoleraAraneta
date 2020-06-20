@@ -63,14 +63,13 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva | " +
+        return "Reserva  | " +
                 "Fecha:" + fecha +
                 ", Origen:" + origen +
                 ", Destino:" + destino +
                 ", Cantidad acompañantes:" + cantAcompañantes +
                 ", Avion seleccionado:" + selecAvion +
                 ", Costo Total:" + costoTotal +
-                //", pasajeros:" + pasajeros +
                 ", reader:" + reader;
     }
 
@@ -97,7 +96,7 @@ public class Reserva {
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
 
-    public void indicarFecha(){
+    public void indicarFecha(){ /// pisar valor en ultima funcion.
 /*
         Date fecha = new Date();
         System.out.println(fecha);
