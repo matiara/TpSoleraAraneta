@@ -34,30 +34,6 @@ public class Main {
 
         reserva.mostrarListaUsuarios();
 
-
-
-        ///CREANDO AVIONES
-        ///--------------Bronce
-       /* Bronze bronze1 = new Bronze(1000,150,3,400, Motor.reaccion);
-        Bronze bronze2 = new Bronze(1100,150,3,400,Motor.reaccion);
-        ///--------------Silver
-        Silver silver1 = new Silver(1250,200,5,500,Motor.helice);
-        Silver silver2 = new Silver(1250,200,5,500,Motor.helice);
-        ///--------------Gold
-        /// Aca hay dos tipos por que uno va a ser mas premium (tipo de interfaz).
-        Gold gold1 = new Gold(1500,300,8,750,Motor.pistones);
-        Gold gold2 = new Gold(1500,350,8,800,Motor.pistones);*/
-        ///-------------------------------------------------------------------------------------------------------------
-        ///AGREGANDO AVIONES A EL ARREGLO
-      /*empresa.agregarAvion(bronze1);
-        empresa.agregarAvion(bronze2);
-        empresa.agregarAvion(silver1);
-        empresa.agregarAvion(silver2);
-        empresa.agregarAvion(gold1);
-        empresa.agregarAvion(gold2);*/
-
-
-
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
 

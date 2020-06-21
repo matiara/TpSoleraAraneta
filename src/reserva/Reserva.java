@@ -95,21 +95,10 @@ public class Reserva {
 
     ///--------------------------------------------------------------------------
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
-
     public void indicarFecha(){ /// pisar valor en ultima funcion.
-/*
-        Date fecha = new Date();
-        System.out.println(fecha);
-        */
 
         Calendar c1 = GregorianCalendar.getInstance();
-        /*
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2003, 8,7);
-        Date d = calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println(sdf.format(d));
-        */
+
         SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println("Fecha actual: " +fecha.format(c1.getTime()));
         System.out.println("Ingrese la fecha que quiere realizar el vuelo");
@@ -123,8 +112,6 @@ public class Reserva {
         }
 
     }
-
-
 ///---------------------------------------------------------------------------------------------------------------------
     //2) SELECCIONAR DESTINO Y ORIGEN.
     public int selecOrigen(){
@@ -211,11 +198,9 @@ public class Reserva {
         }
         return valorDestino;
     }
-
-
 ///---------------------------------------------------------------------------------------------------------------------
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.
-    public int putCantAcompañantes(){
+    public void putCantAcompañantes(){
         int check=0;
 
         while(check==0){
@@ -227,16 +212,15 @@ public class Reserva {
                 System.out.println("Numero invalido");
                 check=0;
             }
-            if(cantAcompañantes > 7){
-                System.out.println("Numero, invalido, la cantidad maxima es 7");
+            if(cantAcompañantes > 7){ /// marca que el limite es 7, por que se debe sumar uno por que usuario ocupa un lugar.
+                System.out.println("No tenemos aviones disponibles con esa capacidad de pasajeros");
                 check=0;
             }
         }
-        return this.cantAcompañantes;
+
     }
 
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
-
     public void elegirAvion(){
         /// Los aviones se muestran en el main. Ahi esta el metodo.
         int selecAvion=0;
@@ -258,6 +242,7 @@ public class Reserva {
             }
             this.selecAvion = selecAvion;
 
+
             if(check == 1){
                 System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
             }
@@ -267,7 +252,6 @@ public class Reserva {
 
         }
     }
-
 
     //5) MOSTRAR COSTO TOTAL.
     public int obtenerDistancia(){
@@ -362,9 +346,7 @@ public class Reserva {
 
             if (confirmar == 1){
 
-
                 /// aca tiene que pasar toda la reserva al MAP RESERVAS
-
 
                 System.out.println("Su reserva a sido cargada");
                 check = 1;
