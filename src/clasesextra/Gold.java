@@ -9,8 +9,8 @@ import interfaz.ConexionWifi;
 public class Gold extends Avion implements Catering, ConexionWifi{
 
 
-    public Gold(float capConbustible, float costoXkm, int sizePasajeros, float velMaxima, Motor motor ,String tipoAvion) {
-        super(capConbustible, costoXkm, sizePasajeros, velMaxima, motor,tipoAvion);
+    public Gold(float capConbustible, float costoXkm, int sizePasajeros, float velMaxima, Motor motor ,String tipoAvion,int id, int tarifa) {
+        super(capConbustible, costoXkm, sizePasajeros, velMaxima, motor,tipoAvion,id,tarifa);
     }
 
     ///------------------------- IMPLEMENTACIONES DE LAS INTERFASES -------------------------------
@@ -28,4 +28,6 @@ public class Gold extends Avion implements Catering, ConexionWifi{
     ///---------------------------------------------------------------------------------------------
 
 }
+
+
 
