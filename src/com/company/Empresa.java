@@ -61,7 +61,7 @@ public class Empresa {
         for (int i = 0; i < allAviones.size(); i++) {
 
             JSONObject avion= (JSONObject) allAviones.get(i);
-            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString());
+            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString(),Integer.parseInt(avion.get("id").toString()),Integer.parseInt(avion.get("tarifa").toString()));
             agregarAvion(t);
         }
     }
@@ -71,9 +71,8 @@ public class Empresa {
         for (int i = 0; i < allReservas.size(); i++) {
 
             JSONObject reserva = (JSONObject) allReservas.get(i);
-            //tira error por que es un string 
-            // Reserva r = new Reserva(Integer.parseInt(reserva.get("fecha").toString()),Lugares.valueOf(reserva.get("origen").toString()),Lugares.valueOf(reserva.get("destino").toString()),Integer.parseInt(reserva.get("canAcompañantes").toString()),Integer.parseInt(reserva.get("selecAvion").toString()),Float.parseFloat(reserva.get("costoTotal").toString()),Integer.parseInt(reserva.get("dni").toString()));
-            //agregarReserva(r);
+            Reserva r = new Reserva(reserva.get("fecha").toString(),Lugares.valueOf(reserva.get("origen").toString()),Lugares.valueOf(reserva.get("destino").toString()),Integer.parseInt(reserva.get("canAcompañantes").toString()),Integer.parseInt(reserva.get("selecAvion").toString()),Float.parseFloat(reserva.get("costoTotal").toString()),Integer.parseInt(reserva.get("dni").toString()));
+            agregarReserva(r);
 
         }
     }
