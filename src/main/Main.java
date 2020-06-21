@@ -17,17 +17,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
-
         ManejadorJson manejador = new ManejadorJson(empresa);
 
         // empresa.cargarAviones(manejador.leerAviones);
         // empresa.cargarUsuarios(manejador.leerUsuarios);
         // empresa.cargarReservas(manejador.leerReservas);
         // Crear menu aparte
+
 
 
         /// CREANDO MENU INTERACTIVO
@@ -59,12 +57,12 @@ public class Main {
                         break;
 
                     case 2:
+
                         ///CREANDO RESERVA
                         Reserva reserva = new Reserva();
 
-                        /// CORROBORAR DNI
                         /*
-
+                        /// CORROBORAR DNI
                         int encontrado = 0;
                         encontrado = empresa.buscarDni();
 
@@ -76,7 +74,6 @@ public class Main {
                         else{
                             System.out.println("Su DNI ha sido encontrado, porfavor ingrese los valores requeridos");
                         }
-
                         */
 
                         ///FECHA
@@ -132,9 +129,7 @@ public class Main {
                                 check = 0;
                                 System.out.println("Valor incorrecto, vuelva a ingresar el valor");
                             }
-
                         }
-
 
                         salir = true;
                         break;

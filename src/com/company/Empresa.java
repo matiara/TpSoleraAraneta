@@ -131,12 +131,6 @@ public class Empresa {
         }
         return dniBuscado;
     }
-/*
-    //iterating over keys only
-    for (Integer key : map.keySet()) {
-        System.out.println("Key = " + key);
-    }
-  */
 
     public int buscarDni(){
         System.out.println("BUSCANDO DNI");
