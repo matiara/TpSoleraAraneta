@@ -3,6 +3,7 @@ package com.company;
 import com.sun.source.tree.BreakTree;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import reserva.Lugares;
 import reserva.Reserva;
 
 import java.util.ArrayList;
