@@ -7,15 +7,19 @@ public class Avion {
     private float velMaxima;
     private Motor motor;
     private String tipoAvion;
+    private int id;
+    private int tarifa;
 
 
-    public Avion(float capConbustible,float costoXkm, int sizePasajeros, float velMaxima, Motor motor,String tipoAvion){
+    public Avion(float capConbustible,float costoXkm, int sizePasajeros, float velMaxima, Motor motor,String tipoAvion,int id,int tarifa){
         this.capConbustible = capConbustible;
         this.costoXkm = costoXkm;
         this.sizePasajeros = sizePasajeros;
         this.velMaxima = velMaxima;
         this.motor = motor;
         this.tipoAvion = tipoAvion;
+        this.id = id;
+        this.tarifa = tarifa;
     }
 
     ///-------------------------------- GETS AND SETS ---------------------------------------------
@@ -29,6 +33,13 @@ public class Avion {
                 "| Tipo de motor: " + motor;
     }*/
 
+    public int getTarifa() { return tarifa; }
+
+    public void setTarifa(int tarifa) { this.tarifa = tarifa; }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getTipoAvion() {
         return tipoAvion;
