@@ -83,6 +83,7 @@ public class ManejadorJson
         newReservaObject.put("Dni", newReserva.getDni());
         newReservaObject.put("origen", newReserva.getOrigen());
         newReservaObject.put("destino", newReserva.getDestino());
+        newReservaObject.put("dni",newReserva.getDni());
 
 
         try (FileWriter file = new FileWriter("src/json/data.json")) {
@@ -98,3 +99,4 @@ public class ManejadorJson
         }
     }
 }
+
