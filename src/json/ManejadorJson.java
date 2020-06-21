@@ -88,14 +88,13 @@ public class ManejadorJson
         try (FileWriter file = new FileWriter("src/json/data.json")) {
 
             JSONArray currentReserva = (JSONArray) this.data.get("reservas");
-            currentReserva.add(newReserva);
+            currentReserva.add(newReservaObject);
             this.data.replace("reservas", currentReserva);
             file.write(this.data.toJSONString());
             file.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
