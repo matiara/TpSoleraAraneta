@@ -29,10 +29,6 @@ public class Main {
         // empresa.cargarReservas(manejador.leerReservas);
         // Crear menu aparte
 
-        ///CREANDO RESERVA
-        Reserva reserva = new Reserva("12/5/2018",null,null, 0,0,0, 0);
-
-        reserva.mostrarListaUsuarios();
 
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
@@ -63,7 +59,12 @@ public class Main {
                         break;
 
                     case 2:
+                        ///CREANDO RESERVA
+                        Reserva reserva = new Reserva();
+
                         /// CORROBORAR DNI
+                        /*
+
                         int encontrado = 0;
                         encontrado = empresa.buscarDni();
 
@@ -76,8 +77,7 @@ public class Main {
                             System.out.println("Su DNI ha sido encontrado, porfavor ingrese los valores requeridos");
                         }
 
-
-
+                        */
 
                         ///FECHA
                         reserva.indicarFecha();
@@ -105,10 +105,39 @@ public class Main {
                                     System.out.println("" + distancia);
 
                                     ///MOSTRANDO LOS DATOS DE LA RESERVA
-                                    reserva.confirmarReserva();
+                        int confirmar=0;
+                        int check=0;
 
-                                    salir = true;
-                                    break;
+                        while (check == 0){
+                            System.out.println("Los datos de la reserva son:");
+                            reserva.mostrarValores();
+
+                            System.out.println("¿Confirmar Reserva?");
+                            System.out.println("1 - SI");
+                            System.out.println("2 - NO");
+                            confirmar = scanner.nextInt();
+
+                            if (confirmar == 1){
+                                empresa.agregarReserva(reserva);
+                                manejador.writeReserva(reserva);
+                                System.out.println("Su reserva a sido cargada");
+                                check = 1;
+                            }
+                            if(confirmar == 2){
+                                System.out.println("Acaba de cancelar la reserva");
+                                check = 1;
+                            }
+
+                            if (confirmar <1 || confirmar > 2){
+                                check = 0;
+                                System.out.println("Valor incorrecto, vuelva a ingresar el valor");
+                            }
+
+                        }
+
+
+                        salir = true;
+                        break;
 
                     case 3:
 
@@ -119,14 +148,6 @@ public class Main {
                         System.out.println("Mostrando aviones");
                         empresa.mostrarAviones();
 
-                        /// CANCELAR RESERVA
-                        System.out.println("Cancelar Reserva");
-                        System.out.println("LA RESERVA ES: "+ reserva.toString());
-                        reserva.mostrarListaUsuarios();
-
-                        System.out.println("Ingrese el DNI que quiere eliminar");
-
-                        //empresa.eliminarReserva();
 
                         ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
                     break;

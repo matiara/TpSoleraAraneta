@@ -30,6 +30,10 @@ public class Reserva {
         this.dni = dni;
     }
 
+    public Reserva() {
+
+    }
+
     Scanner reader = new Scanner(System.in);
 
     ///------------------------GETS AND SETS ------------------------------------
@@ -117,6 +121,37 @@ public class Reserva {
 
 
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
+
+    public void indicarFecha(){ /// pisar valor en ultima funcion.
+/*
+        Date fecha = new Date();
+        System.out.println(fecha);
+        /
+
+        Calendar c1 = GregorianCalendar.getInstance();
+        /
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2003, 8,7);
+        Date d = calendar.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println(sdf.format(d));
+        */
+        Calendar c1 = GregorianCalendar.getInstance();
+        SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Fecha actual: " +fecha.format(c1.getTime()));
+        System.out.println("Ingrese la fecha que quiere realizar el vuelo");
+        String sDate1 = reader.next();
+        try {
+            Date date1 = fecha.parse(sDate1);
+            System.out.println("A usted le gustaria reservar en la fecha: " + fecha.format(date1));
+            this.fecha = date1.toString();
+        } catch (ParseException e) {
+            System.err.println("Error al ingresar la fecha");
+        }
+
+    }
+
+    /*
     public void indicarFecha(){ /// pisar valor en ultima funcion.
 
         Calendar c1 = GregorianCalendar.getInstance();
@@ -133,7 +168,7 @@ public class Reserva {
             System.err.println("Error al ingresar la fecha");
         }
 
-    }
+    }*/
 ///---------------------------------------------------------------------------------------------------------------------
     //2) SELECCIONAR DESTINO Y ORIGEN.
     public int selecOrigen(){
@@ -239,7 +274,6 @@ public class Reserva {
                 check=0;
             }
         }
-
     }
 
     //4) SELECCIONAR EL AVION (DEBE MOSTRAR LOS POSIBLES)
