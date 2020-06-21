@@ -37,11 +37,10 @@ public class ManejadorJson
             JSONArray allAviones = (JSONArray) this.data.get("aviones");
             JSONArray allReservas = (JSONArray) this.data.get("reservas");
 
-            System.out.println("mati: " + allReservas);
+            System.out.println("Reservas: " + allReservas);
             empresa.inicializarUsuarios(allUsuarios);
             empresa.inicializarAviones(allAviones);
             empresa.inicializarReservas(allReservas);
-
 
             System.out.println("Informacion en el sistema: " + this.data);
 

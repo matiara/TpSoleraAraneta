@@ -24,8 +24,6 @@ public class Main {
         // empresa.cargarAviones(manejador.leerAviones);
         // empresa.cargarUsuarios(manejador.leerUsuarios);
         // empresa.cargarReservas(manejador.leerReservas);
-        // Crear menu apart
-
 
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
@@ -141,7 +139,6 @@ public class Main {
                         /// MOSTRANDO AVIONES
                         System.out.println("Mostrando aviones");
                         empresa.mostrarAviones();
-
 
                         ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
                     break;

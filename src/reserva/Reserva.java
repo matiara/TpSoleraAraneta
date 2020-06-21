@@ -1,5 +1,6 @@
 package reserva;
 
+import com.company.Avion;
 import com.company.Empresa;
 import com.company.Usuario;
 
@@ -358,22 +359,41 @@ public class Reserva {
     }*/
 
 
+
+    /*public int calcularCosto(){
+        return ( Distancia() * ipoAvion.costoKm() ) + ( pasajeros.size() * 3500 ) + tipoAvion.getTarifa();
+    }*/
+
+    public void calcularCosto(ArrayList<Avion> aviones){
+        /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
+        float costoKm = 0;
+        int tarifa = 0 ;
+        for(Avion a : aviones){
+            if(a.getId() == this.selecAvion) {
+                costoKm = a.getCostoXkm();
+                tarifa = a.getTarifa();
+            }
+        }
+        this.costoTotal = ((obtenerDistancia() * costoKm) + (cantAcompañantes + 1 * 3500) + tarifa);
+    }
+
+
     /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
-        public void mostrarValores(){
+    public void mostrarValores(){
         System.out.println("Mostrando los datos de la reserva");
         System.out.println("Fecha: " + this.fecha);
         System.out.println("Origen: " + this.origen);
         System.out.println("Destino: " + this.destino);
         System.out.println("Cantidad de acompañantes: " + this.cantAcompañantes);
         System.out.println("Avion Seleccionado: " + this.selecAvion);
-        System.out.println("Costo total: ");
+        System.out.println("Costo total: " + this.costoTotal);
     }
 
     public void confirmarReserva(){
-            int confirmar=0;
-            int check=0;
+        int confirmar=0;
+        int check=0;
 
-            while (check == 0){
+        while (check == 0){
             System.out.println("Los datos de la reserva son:");
             mostrarValores();
 
@@ -399,9 +419,7 @@ public class Reserva {
                 System.out.println("Valor incorrecto, vuelva a ingresar el valor");
             }
 
-            }
-
-            }
         }
 
-
+    }
+}
