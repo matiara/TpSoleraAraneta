@@ -1,12 +1,13 @@
 package com.company;
 
+import com.sun.source.tree.BreakTree;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import reserva.Lugares;
 import reserva.Reserva;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 
 public class Empresa {
@@ -16,6 +17,7 @@ public class Empresa {
     private HashMap<Integer, Reserva> mapReservas;
 
     /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.
+    Scanner reader = new Scanner(System.in);
 
     public Empresa(String nombre){
         this.nombre = nombre;
@@ -78,8 +80,6 @@ public class Empresa {
 
     ///funcion para how to convert from jsonarray to arraylist(aviones)
     ///funcion para how to convert from jsonarray to hashmap(reserva)
-
-
     public void generarReserva(Usuario usuario, Reserva reserva){
         mapReservas.put(usuario.getDni(),reserva);
     }
@@ -111,13 +111,47 @@ public class Empresa {
        }
     }
 
+    public int ingresarDni(){
+        int check=0;
+        int dniBuscado=0;
 
-    /*
-    public void eliminarReserva(int dni){
+        System.out.println("Ingrese el dni del usuario");
+        dniBuscado = reader.nextInt();
+        if(dniBuscado <30000000 || dniBuscado> 70000000){
+            System.out.println("Los valores ingresados del DNI, no son validos");
+            check = 0;
+        }
+        else{
+            check = 1;
+        }
 
-        mapReservas.remove()
+        while (check == 0){
+            System.out.println("Vuelva a intentarlo");
+            dniBuscado =reader.nextInt();
+        }
+        return dniBuscado;
     }
-    */
+/*
+    //iterating over keys only
+    for (Integer key : map.keySet()) {
+        System.out.println("Key = " + key);
+    }
+  */
+
+    public int buscarDni(){
+        System.out.println("BUSCANDO DNI");
+        int dniBuscado = ingresarDni();
+        int buscado=0;
+        for (Integer key : mapUsuarios.keySet()) {
+            if(dniBuscado == key){
+                buscado = 1;
+            }
+            else{
+                buscado = 0;
+            }
+        }
+        return buscado;
+    }
 }
 
 

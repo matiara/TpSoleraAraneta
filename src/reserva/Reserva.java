@@ -1,5 +1,6 @@
 package reserva;
 
+import com.company.Empresa;
 import com.company.Usuario;
 
 import java.text.DateFormat;
@@ -94,6 +95,27 @@ public class Reserva {
 
 
     ///--------------------------------------------------------------------------
+    /// INGRESAR DNI PARA VER SI SE ENCUENTRA REGISTRADO.
+    /*public void ingresarDni(){
+        int check=0;
+        System.out.println("Ingrese el dni del usuario");
+        this.dni = reader.nextInt();
+        if(this.dni <30000000 || this.dni> 70000000){
+            System.out.println("Los valores ingresados del DNI, no son validos");
+            check = 0;
+        }
+        else{
+            check = 1;
+        }
+
+        while (check == 0){
+            System.out.println("Vuelva a intentarlo");
+            this.dni =reader.nextInt();
+        }
+    }*/
+
+
+
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
     public void indicarFecha(){ /// pisar valor en ultima funcion.
 

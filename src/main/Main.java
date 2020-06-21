@@ -39,7 +39,7 @@ public class Main {
 
         boolean salir = false;
 
-        while(!salir){
+        while( salir == false){
             System.out.println("1 | Registrarse");
             System.out.println("2 | Iniciar Reserva") ;
             System.out.println("3 | Cancelar Reserva");
@@ -63,10 +63,24 @@ public class Main {
                         break;
 
                     case 2:
+                        /// CORROBORAR DNI
+                        int encontrado = 0;
+                        encontrado = empresa.buscarDni();
+
+                        if(encontrado == 0){
+                            System.out.println("No puedes realizar reserva por que el DNI no se encontro");
+                            break;
+
+                        }
+                        else{
+                            System.out.println("Su DNI ha sido encontrado, porfavor ingrese los valores requeridos");
+                        }
+
+
+
+
                         ///FECHA
-
                         reserva.indicarFecha();
-
 
                         /// ORIGEN - DESTINO
 
