@@ -25,7 +25,6 @@ public class Main {
         // empresa.cargarUsuarios(manejador.leerUsuarios);
         // empresa.cargarReservas(manejador.leerReservas);
         // Crear menu apart
-        System.out.println("probando");
 
 
         /// CREANDO MENU INTERACTIVO
