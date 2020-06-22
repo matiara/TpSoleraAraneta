@@ -37,10 +37,11 @@ public class ManejadorJson
             JSONArray allAviones = (JSONArray) this.data.get("aviones");
             JSONArray allReservas = (JSONArray) this.data.get("reservas");
 
-            System.out.println("Reservas: " + allReservas);
+            System.out.println("mati: " + allReservas);
             empresa.inicializarUsuarios(allUsuarios);
             empresa.inicializarAviones(allAviones);
             empresa.inicializarReservas(allReservas);
+
 
             System.out.println("Informacion en el sistema: " + this.data);
 
@@ -57,9 +58,8 @@ public class ManejadorJson
         JSONObject newUserObject = new JSONObject();
         newUserObject.put("nombre", newUser.getNombre());
         newUserObject.put("apellido", newUser.getApellido());
-        newUserObject.put("dni", newUser.getDni());
         newUserObject.put("edad", newUser.getEdad());
-
+        newUserObject.put("dni", newUser.getDni());
 
         try (FileWriter file = new FileWriter("src/json/data.json")) {
 
@@ -77,12 +77,11 @@ public class ManejadorJson
     {
         JSONObject newReservaObject = new JSONObject();
         newReservaObject.put("fecha" , newReserva.getFecha());
-        newReservaObject.put("cantAcompañates", newReserva.getCantAcompañantes());
-        newReservaObject.put("SelecAvion", newReserva.getSelecAvion());
-        newReservaObject.put("CostoTotal", newReserva.getCostoTotal());
-        newReservaObject.put("Dni", newReserva.getDni());
-        newReservaObject.put("origen", newReserva.getOrigen());
-        newReservaObject.put("destino", newReserva.getDestino());
+        newReservaObject.put("cantAcompañantes", newReserva.getCantAcompañantes());
+        newReservaObject.put("selecAvion", newReserva.getSelecAvion());
+        newReservaObject.put("costoTotal", newReserva.getCostoTotal());
+        newReservaObject.put("origen", newReserva.getOrigen().toString());
+        newReservaObject.put("destino", newReserva.getDestino().toString());
         newReservaObject.put("dni",newReserva.getDni());
 
 
@@ -99,4 +98,3 @@ public class ManejadorJson
         }
     }
 }
-
