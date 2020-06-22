@@ -10,13 +10,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class Empresa {
     private String nombre;
     private HashMap<Integer, Usuario> mapUsuarios;
     private ArrayList<Avion>listaAviones;
     private HashMap<Integer, Reserva> mapReservas;
 
+    /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.
     Scanner reader = new Scanner(System.in);
+
+    public ArrayList<Avion> getListaAviones() {
+        return listaAviones;
+    }
 
     public Empresa(String nombre){
         this.nombre = nombre;
@@ -47,7 +53,7 @@ public class Empresa {
         for (int i = 0; i < allUsuarios.size(); i++) {
 
             JSONObject usuario = (JSONObject) allUsuarios.get(i);
-            Usuario e = new Usuario(usuario.get("nombre").toString(),usuario.get("apellido").toString(),Integer.parseInt(usuario.get("dni").toString()),Integer.parseInt(usuario.get("edad").toString()));
+            Usuario e = new Usuario(usuario.get("nombre").toString(),usuario.get("apellido").toString(), Integer.parseInt(usuario.get("edad").toString()),Integer.parseInt(usuario.get("dni").toString()));
             agregarUsuario(e);
 
         }
@@ -68,11 +74,12 @@ public class Empresa {
         for (int i = 0; i < allReservas.size(); i++) {
 
             JSONObject reserva = (JSONObject) allReservas.get(i);
-            Reserva r = new Reserva(reserva.get("fecha").toString(),Lugares.valueOf(reserva.get("origen").toString()),Lugares.valueOf(reserva.get("destino").toString()),Integer.parseInt(reserva.get("canAcompañantes").toString()),Integer.parseInt(reserva.get("selecAvion").toString()),Float.parseFloat(reserva.get("costoTotal").toString()),Integer.parseInt(reserva.get("dni").toString()));
+            Reserva r = new Reserva(reserva.get("fecha").toString(),Lugares.valueOf(reserva.get("origen").toString()), Lugares.valueOf(reserva.get("destino").toString()),Integer.parseInt(reserva.get("cantAcompañantes").toString()),Integer.parseInt(reserva.get("selecAvion").toString()),Float.parseFloat(reserva.get("costoTotal").toString()),Integer.parseInt(reserva.get("dni").toString()));
             agregarReserva(r);
 
         }
     }
+
 
     public void generarReserva(Usuario usuario, Reserva reserva){
         mapReservas.put(usuario.getDni(),reserva);
@@ -86,7 +93,8 @@ public class Empresa {
         mapReservas.remove(r.getDni(),r);
     }
 
-    public void mostrarAviones(){
+
+   public void mostrarAviones(){
        int contador=1;
        for(int i=0;i<listaAviones.size();i++){
            System.out.println("Nº " + contador + " Avion: " + listaAviones.get(i).getTipoAvion());
