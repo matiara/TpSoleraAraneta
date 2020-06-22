@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-
 public class Empresa {
     private String nombre;
     private HashMap<Integer, Usuario> mapUsuarios;
@@ -89,12 +88,8 @@ public class Empresa {
         mapReservas.get(mapUsuarios.keySet());
     }
 
-    public void eliminarReserva(Reserva r){
-        mapReservas.remove(r.getDni(),r);
-    }
-
-
-   public void mostrarAviones(){
+    ///MOSTRAR AVIONES
+    public void mostrarAviones(){
        int contador=1;
        for(int i=0;i<listaAviones.size();i++){
            System.out.println("Nº " + contador + " Avion: " + listaAviones.get(i).getTipoAvion());
@@ -106,6 +101,7 @@ public class Empresa {
        }
     }
 
+    /// INGRESAR DNI
     public int ingresarDni(){
         int check=0;
         int dniBuscado=0;
@@ -127,6 +123,7 @@ public class Empresa {
         return dniBuscado;
     }
 
+    ///BUSCAR DNI
     public int buscarDni(){
         System.out.println("BUSCANDO DNI");
         int dniBuscado = ingresarDni();
@@ -138,9 +135,21 @@ public class Empresa {
             else{
                 buscado = 0;
             }
-
         }
+
         return buscado;
+    }
+
+    ///ELIMINAR RESERVA
+    ///Para poder eliminar una reserva el usuario debe ingresar el dni, luego corroborrar que el dia que quiere realizar la reserva no sea el mismo que el dia que sale el vuelo.
+    ///mapReservas.remove(r.getDni(),r);
+
+    public void eliminarReserva(){
+        System.out.println("Ingrese su dni");
+        int dniBuscado = buscarDni();
+        System.out.println("El DNI BUSCADO DA" + dniBuscado);
+
+
     }
 
 }

@@ -50,11 +50,23 @@ public class Main {
                     Reserva reserva = new Reserva();
 
 
+                    ///BUSCAR DNI
+                    int dniBuscado = empresa.buscarDni();
+                    if (dniBuscado == 1){
+                        System.out.println("Por favor ingrese lo valores para realizar la reserva");
+                    }
+                    if(dniBuscado == 0){
+                        System.out.println("Usted no se encuentra registrado");
+                        break;
+                    }
+
+
                     ///FECHA
                     reserva.indicarFecha();
 
-                    /// ORIGEN - DESTINO
 
+
+                    /// ORIGEN - DESTINO
                     int origen = reserva.selecOrigen();
                     int destino = reserva.selecDestino();
 
@@ -110,13 +122,11 @@ public class Main {
                     break;
 
                     case 3:
+                        /// CANCELAR RESERVA:
+                        empresa.eliminarReserva();
 
-                    /// MOSTRANDO USUARIOS
-                    System.out.println("Mostrando usuarios: \n");
-                    empresa.mostrarUsuarios();
-                    /// MOSTRANDO AVIONES
-                    System.out.println("Mostrando aviones");
-                    empresa.mostrarAviones();
+
+
 
 
                     break;

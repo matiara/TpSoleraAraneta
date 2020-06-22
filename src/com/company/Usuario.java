@@ -74,10 +74,7 @@ public class Usuario {
             System.out.println("Los valores ingresados del DNI, no son validos");
             verificacion = 0;
         }
-
-
         }
-
     }
 
 
