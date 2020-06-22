@@ -3,12 +3,14 @@ package reserva;
 import com.company.Avion;
 import com.company.Empresa;
 import com.company.Usuario;
+import interfaz.Catering;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.spi.CalendarDataProvider;
+
 
 public class Reserva {
     private String fecha;
@@ -20,6 +22,7 @@ public class Reserva {
     private ArrayList<Usuario> listaUsuarios;
     private int dni;
 
+
     public Reserva(String fecha,Lugares origen,Lugares destino,int cantAcompañantes, int selecAvion, float costoTotal,int dni){
         this.fecha = fecha;
         this.origen = origen;
@@ -29,6 +32,7 @@ public class Reserva {
         this.costoTotal = costoTotal;
         this.listaUsuarios = new ArrayList<>();
         this.dni = dni;
+
     }
 
     public Reserva() {
@@ -98,9 +102,7 @@ public class Reserva {
         System.out.println("Nº4 Montevideo");
     }
 
-
     ///--------------------------------------------------------------------------
-
 
 
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
@@ -132,9 +134,10 @@ public class Reserva {
         }
 
     }
-///---------------------------------------------------------------------------------------------------------------------
-//2) SELECCIONAR DESTINO Y ORIGEN.
+
+    //2) SELECCIONAR DESTINO Y ORIGEN.
     public int selecOrigen(){
+
 
         int check=0;
         int valorOrigen=0;
@@ -218,7 +221,7 @@ public class Reserva {
         }
         return valorDestino;
     }
-///---------------------------------------------------------------------------------------------------------------------
+
     //3) CANTIDAD DE ACOMPAÑANTES QUE TENDRIA.
     public void putCantAcompañantes(){
         int check=0;
@@ -259,18 +262,19 @@ public class Reserva {
                 System.out.println("El maximo es 5");
                 check=0;
             }
-            this.selecAvion = selecAvion;
 
+
+            this.selecAvion = selecAvion;
 
             if(check == 1){
                 System.out.println("Ustede selecciono el avion Nº: " + selecAvion);
             }
 
-            /// validaciones en condicion de cantidad de pasajeros en total.
             this.selecAvion = selecAvion;
 
         }
     }
+
 
     //5) MOSTRAR COSTO TOTAL.
     public int obtenerDistancia(){
@@ -332,7 +336,7 @@ public class Reserva {
         /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
         float costoKm = 0;
         int tarifa = 0 ;
-        float total=0;
+        float total= 0;
         for(Avion a : aviones){
             if(a.getId() == this.selecAvion) {
                 costoKm = a.getCostoXkm();
@@ -391,4 +395,33 @@ public class Reserva {
         }
 
     }
+
+    /// CORROBORRAR DNI
+    public void corrarborrarDNI(){
+
+        int check=0;
+        int corroborrar =0;
+
+        System.out.println("Ingrese nuevamente el dni");
+        corroborrar = reader.nextInt();
+        if(corroborrar <30000000 || corroborrar> 70000000){
+            System.out.println("Los valores ingresados del DNI, no son validos");
+            check = 0;
+        }
+        else{
+            check = 1;
+        }
+
+        while (check == 0){
+            System.out.println("Vuelva a intentarlo");
+            corroborrar =reader.nextInt();
+        }
+        this.dni = corroborrar;
+    }
+
+    public void Catering(){
+        System.out.println("Este avion cuenta con catering");
+    }
+
 }
+

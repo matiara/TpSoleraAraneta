@@ -9,9 +9,11 @@ public class Avion {
     private String tipoAvion;
     private int id;
     private int tarifa;
+    private String wifi;
+    private String catering;
 
 
-    public Avion(float capConbustible,float costoXkm, int sizePasajeros, float velMaxima, Motor motor,String tipoAvion,int id,int tarifa){
+    public Avion(float capConbustible,float costoXkm, int sizePasajeros, float velMaxima, Motor motor,String tipoAvion,int id,int tarifa, String wifi, String catering){
         this.capConbustible = capConbustible;
         this.costoXkm = costoXkm;
         this.sizePasajeros = sizePasajeros;
@@ -20,6 +22,8 @@ public class Avion {
         this.tipoAvion = tipoAvion;
         this.id = id;
         this.tarifa = tarifa;
+        this.wifi = wifi;
+        this.catering = catering;
     }
 
     ///-------------------------------- GETS AND SETS ---------------------------------------------
@@ -32,6 +36,14 @@ public class Avion {
                 "| Velocidad Maxima: " + velMaxima +
                 "| Tipo de motor: " + motor;
     }*/
+
+    public String getWifi() {
+        return wifi;
+    }
+
+    public String getCatering() {
+        return catering;
+    }
 
     public int getTarifa() { return tarifa; }
 

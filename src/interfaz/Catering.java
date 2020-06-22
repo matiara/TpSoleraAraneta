@@ -1,5 +1,5 @@
 package interfaz;
 
 public interface Catering {
-    void catering();
+    public void catering();
 }

@@ -61,7 +61,7 @@ public class Empresa {
         for (int i = 0; i < allAviones.size(); i++) {
 
             JSONObject avion= (JSONObject) allAviones.get(i);
-            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString(),Integer.parseInt(avion.get("id").toString()),Integer.parseInt(avion.get("tarifa").toString()));
+            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString(),Integer.parseInt(avion.get("id").toString()),Integer.parseInt(avion.get("tarifa").toString()),avion.get("wifi").toString(),avion.get("catering").toString());
             agregarAvion(t);
         }
     }
@@ -89,7 +89,9 @@ public class Empresa {
             System.out.println("Cantidad maxima de pasajeros: " + listaAviones.get(i).getSizePasajeros());
             System.out.println("Velocidad maxima: " + listaAviones.get(i).getVelMaxima());
             System.out.println("Costo por kilometro: " + listaAviones.get(i).getCostoXkm());
-            System.out.println("");
+            System.out.println("Wifi:" + listaAviones.get(i).getWifi());
+            System.out.println("Catering:" + listaAviones.get(i).getCatering());
+            System.out.println(" ");
             contador++;
         }
     }
@@ -103,7 +105,6 @@ public class Empresa {
     public void generarReserva(Usuario usuario, Reserva reserva){
         mapReservas.put(usuario.getDni(),reserva);
     }
-
 
     /// INGRESAR DNI
     public int ingresarDni(){
@@ -163,9 +164,8 @@ public class Empresa {
             if(checkBorrar == 1){
                 mapReservas.remove(dniBuscado);
             }
-
-
         }
     }
+
 }
 

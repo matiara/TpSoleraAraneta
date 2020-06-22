@@ -60,6 +60,8 @@ public class Main {
                         break;
                     }
 
+                    reserva.corrarborrarDNI();
+
                     ///FECHA
                     reserva.indicarFecha();
 
@@ -122,10 +124,6 @@ public class Main {
                     case 3:
                         /// CANCELAR RESERVA:
                         empresa.eliminarReserva();
-
-
-
-
 
                     break;
 

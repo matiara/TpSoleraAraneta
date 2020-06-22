@@ -1,5 +1,6 @@
 package interfaz;
 
 public interface ConexionWifi {
-    void conexionWifi();
+
+    public void conexionWifi();
 }
