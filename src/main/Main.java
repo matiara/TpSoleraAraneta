@@ -1,28 +1,22 @@
 package main;
-import clasesextra.Bronze;
-import clasesextra.Gold;
-import clasesextra.Silver;
+
 import com.company.Empresa;
-import com.company.Motor;
 import com.company.Usuario;
 import reserva.Reserva;
 import json.ManejadorJson;
 
-import javax.crypto.spec.PSource;
-import java.io.Console;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        
+
     Scanner scanner = new Scanner(System.in);
     Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
     ManejadorJson manejador = new ManejadorJson(empresa);
 
-    
+
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
 
