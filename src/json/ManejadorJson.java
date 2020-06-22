@@ -57,8 +57,9 @@ public class ManejadorJson
         JSONObject newUserObject = new JSONObject();
         newUserObject.put("nombre", newUser.getNombre());
         newUserObject.put("apellido", newUser.getApellido());
-        newUserObject.put("edad", newUser.getEdad());
         newUserObject.put("dni", newUser.getDni());
+        newUserObject.put("edad", newUser.getEdad());
+
 
         try (FileWriter file = new FileWriter("src/json/data.json")) {
 

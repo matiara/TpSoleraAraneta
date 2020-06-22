@@ -17,13 +17,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+        /// cambiar la key en el map de reservas
+
         Scanner scanner = new Scanner(System.in);
         Empresa empresa = new Empresa("Aerotaxi Club"); /// CREACION DE EMPRESA
         ManejadorJson manejador = new ManejadorJson(empresa);
-
-        // empresa.cargarAviones(manejador.leerAviones);
-        // empresa.cargarUsuarios(manejador.leerUsuarios);
-        // empresa.cargarReservas(manejador.leerReservas);
 
         /// CREANDO MENU INTERACTIVO
         int opcion=0;
@@ -43,9 +42,6 @@ public class Main {
                 switch(opcion){
                     case 1:
 
-                        /// PROBANDO DE CREAR UN USUARIO EN DONDE SE AGREGE A EMPRESA, Y SE LO MUESTRE.
-
-                        // lo mismo pero con reserva
                         Usuario nuevoUsuario = new Usuario();
                         nuevoUsuario.crearUsuario();
                         empresa.agregarUsuario(nuevoUsuario);
@@ -55,11 +51,11 @@ public class Main {
 
                     case 2:
 
-                        ///CREANDO RESERVA
+                        ///CREANDO RESERVA              /// ------------------------------------------> corregir esto
                         Reserva reserva = new Reserva();
 
-                        /*
                         /// CORROBORAR DNI
+
                         int encontrado = 0;
                         encontrado = empresa.buscarDni();
 
@@ -71,7 +67,7 @@ public class Main {
                         else{
                             System.out.println("Su DNI ha sido encontrado, porfavor ingrese los valores requeridos");
                         }
-                        */
+
 
                         ///FECHA
                         reserva.indicarFecha();
@@ -94,16 +90,20 @@ public class Main {
                                     reserva.elegirAvion();
 
                                     /// OBTENIENDO DISTANCIA.
-                                    System.out.println("Obteniendo distancia");
                                     int distancia = reserva.obtenerDistancia();
-                                    System.out.println("" + distancia);
 
                                     ///MOSTRANDO LOS DATOS DE LA RESERVA
+
+
+                        /// implementar funcion en vez de resolver el codigo aca.
+
                         int confirmar=0;
                         int check=0;
 
                         while (check == 0){
                             System.out.println("Los datos de la reserva son:");
+                            reserva.getCostoTotal();
+                            System.out.println("\n");
                             reserva.mostrarValores();
 
                             System.out.println("¿Confirmar Reserva?");
@@ -134,11 +134,9 @@ public class Main {
                     case 3:
 
                         /// MOSTRANDO USUARIOS
-                        System.out.println("Mostrando usuarios: \n");
+                        System.out.println("Mostrando usuarios: ");
                         empresa.mostrarUsuarios();
-                        /// MOSTRANDO AVIONES
-                        System.out.println("Mostrando aviones");
-                        empresa.mostrarAviones();
+
 
                         ///ACA TIENE QUE MOSTRAR TODAS LAS RESERVAS HECHAS HASTA EL MOMENTO Y SELECCIONAR CON UN INT CUAL HAY QUE CANCELAR Y QUE ESA LA BORRE.
                     break;

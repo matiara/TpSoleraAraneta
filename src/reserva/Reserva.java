@@ -132,8 +132,8 @@ public class Reserva {
         */
 
         Calendar c1 = GregorianCalendar.getInstance();
-        /*
-        Calendar calendar = Calendar.getInstance();
+
+        /*Calendar calendar = Calendar.getInstance();
         calendar.set(2003, 8,7);
         Date d = calendar.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -348,35 +348,24 @@ public class Reserva {
         return distancia;
     }
 
-
-    /*public int calcularCosto(){
-        return ( Distancia() * ipoAvion.costoKm() ) + ( pasajeros.size() * 3500 ) + tipoAvion.getTarifa();
-    }*/
-    /*
-    public void calcularCosto(){
-        /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
-        this.costoTotal = (obtenerDistancia() * /*tipo avion X COSTOKM */ /*) + (cantAcompañantes + 1 * 3500) + (/*tipo Avion */ /*ge)
-    }*/
-
-
-
-    /*public int calcularCosto(){
-        return ( Distancia() * ipoAvion.costoKm() ) + ( pasajeros.size() * 3500 ) + tipoAvion.getTarifa();
-    }*/
-
-    public void calcularCosto(ArrayList<Avion> aviones){
+    /// el problema de calcular costo es que nunca se implementa correctamente por que adentro tiene una lista de aviones los cuales no son traidos a la funcion nunca.
+    public float calcularCosto(ArrayList<Avion> aviones){
         /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
         float costoKm = 0;
         int tarifa = 0 ;
+        float total=0;
         for(Avion a : aviones){
             if(a.getId() == this.selecAvion) {
                 costoKm = a.getCostoXkm();
+                System.out.println("Costo:" + costoKm);
                 tarifa = a.getTarifa();
+                System.out.println("Tarifa: " + tarifa);
             }
         }
-        this.costoTotal = ((obtenerDistancia() * costoKm) + (cantAcompañantes + 1 * 3500) + tarifa);
+        total = ((obtenerDistancia() * costoKm) + (cantAcompañantes + 1 * 3500) + tarifa);
+        System.out.println("EL TOTAL ES : " + total);
+        return total;
     }
-
 
     /// PRIMERO QUE MUESTRE LOS VALORES Y LOS CONFIRME
     public void mostrarValores(){
