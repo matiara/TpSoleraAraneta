@@ -328,7 +328,6 @@ public class Reserva {
         return distancia;
     }
 
-    /// el problema de calcular costo es que nunca se implementa correctamente por que adentro tiene una lista de aviones los cuales no son traidos a la funcion nunca.
     public float calcularCosto(ArrayList<Avion> aviones){
         /// UNA VARIABLE QUE INDIQUE EL AVION QUE SELECCIONÓ para luego poder atajar estos valores
         float costoKm = 0;

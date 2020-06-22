@@ -60,11 +60,8 @@ public class Main {
                         break;
                     }
 
-
                     ///FECHA
                     reserva.indicarFecha();
-
-
 
                     /// ORIGEN - DESTINO
                     int origen = reserva.selecOrigen();
@@ -72,6 +69,7 @@ public class Main {
 
                     if(origen == destino){
                         System.out.println("El destino y el origen no pueden ser iguales");
+                        break;
                     }
 
                     /// CANTIDAD ACOMPAÑANTES.

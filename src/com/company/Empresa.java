@@ -16,7 +16,6 @@ public class Empresa {
     private ArrayList<Avion>listaAviones;
     private HashMap<Integer, Reserva> mapReservas;
 
-    /// en el map reservas se tiene que poder pasar el dni de la persona que reservó, y los valores de la reserva.
     Scanner reader = new Scanner(System.in);
 
     public ArrayList<Avion> getListaAviones() {
@@ -30,6 +29,8 @@ public class Empresa {
         this.mapReservas = new HashMap<Integer, Reserva>();
     }
 
+    ///AGREGAR USUARIO | AVION | RESERVA
+
     public void agregarUsuario(Usuario u){
         mapUsuarios.put(u.getDni(),u);
     }
@@ -42,10 +43,7 @@ public class Empresa {
         mapReservas.put(r.getDni(),r);
     }
 
-    public void mostrarUsuarios(){
-        System.out.println(mapUsuarios.keySet());
-        System.out.println(mapUsuarios.values());
-    }
+    /// INICIALIZAR EN JSON
 
     public void inicializarUsuarios(JSONArray allUsuarios){
 
@@ -58,7 +56,7 @@ public class Empresa {
         }
     }
 
-   public void inicializarAviones(JSONArray allAviones){
+    public void inicializarAviones(JSONArray allAviones){
 
         for (int i = 0; i < allAviones.size(); i++) {
 
@@ -79,27 +77,33 @@ public class Empresa {
         }
     }
 
-
-    public void generarReserva(Usuario usuario, Reserva reserva){
-        mapReservas.put(usuario.getDni(),reserva);
-    }
-
+    ///MOSTRAR USUARIOS | AVIONES | RESERVA
     public void mostrarReservas(){
         mapReservas.get(mapUsuarios.keySet());
     }
 
-    ///MOSTRAR AVIONES
     public void mostrarAviones(){
-       int contador=1;
-       for(int i=0;i<listaAviones.size();i++){
-           System.out.println("Nº " + contador + " Avion: " + listaAviones.get(i).getTipoAvion());
-           System.out.println("Cantidad maxima de pasajeros: " + listaAviones.get(i).getSizePasajeros());
-           System.out.println("Velocidad maxima: " + listaAviones.get(i).getVelMaxima());
-           System.out.println("Costo por kilometro: " + listaAviones.get(i).getCostoXkm());
-           System.out.println("");
-           contador++;
-       }
+        int contador=1;
+        for(int i=0;i<listaAviones.size();i++){
+            System.out.println("Nº " + contador + " Avion: " + listaAviones.get(i).getTipoAvion());
+            System.out.println("Cantidad maxima de pasajeros: " + listaAviones.get(i).getSizePasajeros());
+            System.out.println("Velocidad maxima: " + listaAviones.get(i).getVelMaxima());
+            System.out.println("Costo por kilometro: " + listaAviones.get(i).getCostoXkm());
+            System.out.println("");
+            contador++;
+        }
     }
+
+    public void mostrarUsuarios(){
+        System.out.println(mapUsuarios.keySet());
+        System.out.println(mapUsuarios.values());
+    }
+
+    /// GENERAR RESERVA
+    public void generarReserva(Usuario usuario, Reserva reserva){
+        mapReservas.put(usuario.getDni(),reserva);
+    }
+
 
     /// INGRESAR DNI
     public int ingresarDni(){
@@ -144,14 +148,24 @@ public class Empresa {
     ///Para poder eliminar una reserva el usuario debe ingresar el dni, luego corroborrar que el dia que quiere realizar la reserva no sea el mismo que el dia que sale el vuelo.
     ///mapReservas.remove(r.getDni(),r);
 
+
     public void eliminarReserva(){
         System.out.println("Ingrese su dni");
         int dniBuscado = buscarDni();
         System.out.println("El DNI BUSCADO DA" + dniBuscado);
 
+        if(dniBuscado == 1){
+            System.out.println("¿Esta seguro que quiere borrar su reserva?");
+            System.out.println("1 | SI");
+            System.out.println("2 | NO");
 
+            int checkBorrar = reader.nextInt();
+            if(checkBorrar == 1){
+                mapReservas.remove(dniBuscado);
+            }
+
+
+        }
     }
-
 }
-
 
