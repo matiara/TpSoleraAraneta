@@ -6,15 +6,18 @@ import java.util.Scanner;
 public class Usuario {
     private String nombre;
     private String apellido;
-    private int dni;
     private int edad;
+    private int dni;
 
-   public Usuario(String nombre, String apellido, int dni, int edad){
+
+
+    public Usuario(String nombre, String apellido, int edad, int dni){
        this.nombre = nombre;
        this.apellido = apellido;
-       this.dni = dni;
        this.edad = edad;
-   }
+       this.dni = dni;
+
+    }
     public Usuario(){
 
     }
