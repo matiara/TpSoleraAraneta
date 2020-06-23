@@ -1,6 +1,7 @@
 package com.company;
 
 import com.sun.source.tree.BreakTree;
+import json.ManejadorJson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import reserva.Lugares;
@@ -107,25 +108,28 @@ public class Empresa {
     }
 
     /// INGRESAR DNI
-    public int ingresarDni(){
-        int check=0;
-        int dniBuscado=0;
+    public int ingresarDni() {
+
+        int dniBuscado = 0;
 
         System.out.println("Ingrese el dni del usuario");
-        dniBuscado = reader.nextInt();
-        if(dniBuscado <30000000 || dniBuscado> 70000000){
-            System.out.println("Los valores ingresados del DNI, no son validos");
-            check = 0;
-        }
-        else{
-            check = 1;
+
+        while (true){
+
+            Scanner reader = new Scanner(System.in);
+
+            try{
+                dniBuscado = reader.nextInt();
+                if(!(dniBuscado <30000000 || dniBuscado> 70000000)){
+                    return dniBuscado;
+                }
+
+            } catch (InputMismatchException e){
+                System.out.println("Vuelva ingresar el dni correctamente ");
+            }
+
         }
 
-        while (check == 0){
-            System.out.println("Vuelva a intentarlo");
-            dniBuscado =reader.nextInt();
-        }
-        return dniBuscado;
     }
 
     ///BUSCAR DNI
@@ -134,71 +138,63 @@ public class Empresa {
         int dniBuscado = ingresarDni();
         int buscado=0;
 
+        if(dniBuscado == 0){
+            return 0;
+        }
+
+
         for (Integer key : mapUsuarios.keySet()) {
             if(dniBuscado == key){
-                buscado = 1;
+                buscado = key;
+                break;
             }
-            else{
-                buscado = 0;
-            }
+
         }
 
         return buscado;
     }
 
 
-/// ELIMINAR RESERVA
-    public void eliminarReserva(){
-        boolean verificar = verificarFecha();
+    /// ELIMINAR RESERVA
+    public void eliminarReserva(ManejadorJson manejador){
 
         System.out.println("Ingrese su dni");
         int dniBuscado = buscarDni();
         System.out.println("El DNI BUSCADO DA: " + dniBuscado);
 
-        if(dniBuscado == 1){
-            if(verificar == false){
-                System.out.println("No puede cancelar un vuelo, el mismo dia ");
+            if(dniBuscado != 0 && verificarFecha(dniBuscado)){
+
+                mapReservas.remove(dniBuscado);
+                System.out.println("Reserva cancelada");
+                manejador.writeReservas(mapReservas);
 
             }
             else{
-                System.out.println("Reserva cancelada");
-                mapReservas.remove(dniBuscado);
-                for (Map.Entry<Integer, Reserva> r : mapReservas.entrySet()) {
-
-                    System.out.println(" Value: " + r.getValue().getFecha());
-
-                }
+                System.out.println("La reserva no pudo ser cancelada");
             }
-        }
-
 
     }
 
-    public boolean verificarFecha(){
+    public boolean verificarFecha(int dni){
 
         /// Para poder obtener la fecha del dia actual.
         Calendar c1 = GregorianCalendar.getInstance();
-        boolean flag = false;
+        boolean flag = true;
         SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaActual = fecha.format(c1.getTime());
 
         System.out.println("Fecha actual: " +fecha.format(c1.getTime()));
 
         for (Map.Entry<Integer, Reserva> r : mapReservas.entrySet()) {
 
-            System.out.println(" Value: " + r.getValue().getFecha());
+            System.out.println("Fecha del vuelo reservado: " + r.getValue().getFecha());
 
-            if(fecha.equals(r.getValue().getFecha())){
-
+            if(dni == r.getKey() && fechaActual.equals(r.getValue().getFecha())){
+                flag = false;
             }
-            else{
-                flag = true;
-            }
-
-
         }
         return flag;
     }
-
 
     public boolean verificarDisponibilidad(Reserva reserva){
         boolean flag = false;
@@ -216,6 +212,8 @@ public class Empresa {
 
     ///LISTAR TODOS LOS VUELOS PROGRAMADOS EN UNA FECHA
     public void listarVuelos(){
+
+        boolean flag = false;
         int i =0;
         SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
         System.out.println("Ingrese la fecha que quiere ver: ");
@@ -230,16 +228,19 @@ public class Empresa {
 
         for (Map.Entry<Integer, Reserva> r : mapReservas.entrySet()) {
 
-            System.out.println(" Value: " + r.getValue().getFecha());
             if(sDate1.equals(r.getValue().getFecha())){
-                ///aca hay que mostrar todoo
 
+                System.out.println("El cliente con el dni: " + r.getKey() + " Tiene una reserva para: " + r.getValue().getCantAcompañantes() + " personas.");
+                flag = true;
             }
-            else{
-                System.out.println("No hay reservas en ese dia");
-            }
+
 
         }
+        if(!flag){
+            System.out.println("No existen reservas para ese dia");
+        }
+        System.out.println("");
+        System.out.println("");
 
     }
 
@@ -252,10 +253,7 @@ public class Empresa {
     }
 
 
-
-
 }
-
 
 
 
