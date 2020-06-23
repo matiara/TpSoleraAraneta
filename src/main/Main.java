@@ -82,6 +82,13 @@ public class Main {
                     empresa.mostrarAviones();
                     reserva.elegirAvion();
 
+                    if(empresa.verificarDisponibilidad(reserva)){
+                        System.out.println("Este avion esta reservado");
+                        break;
+                    }
+
+
+
                     /// OBTENIENDO DISTANCIA.
                     System.out.println("Obteniendo distancia");
                     int distancia = reserva.obtenerDistancia();
@@ -122,10 +129,16 @@ public class Main {
                     break;
 
                     case 3:
-                        /// CANCELAR RESERVA:
-                        empresa.eliminarReserva();
+
 
                     break;
+
+                    case 4:
+
+
+
+
+                        break;
 
                     default:
                         System.out.println("Las opciones son 1,2 o 3");

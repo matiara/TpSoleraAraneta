@@ -4,7 +4,6 @@ import com.company.Avion;
 import com.company.Empresa;
 import com.company.Usuario;
 import interfaz.Catering;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -121,14 +120,14 @@ public class Reserva {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println(sdf.format(d));
         */
-        SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
         System.out.println("Fecha actual: " +fecha.format(c1.getTime()));
         System.out.println("Ingrese la fecha que quiere realizar el vuelo");
         String sDate1 = reader.next();
         try {
             Date date1 = fecha.parse(sDate1);
             System.out.println("A usted le gustaria reservar en la fecha: " + fecha.format(date1));
-            this.fecha = date1.toString();
+            this.fecha = fecha.format(date1);
         } catch (ParseException e) {
             System.err.println("Error al ingresar la fecha");
         }

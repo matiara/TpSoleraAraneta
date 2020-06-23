@@ -6,9 +6,9 @@ import org.json.simple.JSONObject;
 import reserva.Lugares;
 import reserva.Reserva;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Empresa {
     private String nombre;
@@ -167,5 +167,18 @@ public class Empresa {
         }
     }
 
+
+    public boolean verificarDisponibilidad(Reserva reserva){
+        boolean flag = false;
+        for (Map.Entry<Integer, Reserva> r : mapReservas.entrySet()) {
+
+            System.out.println("Key: "+r.getKey() + " Value: " + r.getValue());
+            if(reserva.getFecha().equals(r.getValue().getFecha()) && reserva.getSelecAvion() == r.getValue().getSelecAvion()){
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
 }
 
