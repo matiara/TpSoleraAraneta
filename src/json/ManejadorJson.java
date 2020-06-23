@@ -17,11 +17,11 @@ import org.json.simple.parser.ParseException;
 
 
 import com.company.Usuario;
-import reserva.Lugares;
 import reserva.Reserva;
 
 public class ManejadorJson
 {
+    ///copia del json en nuestro sistema , sin las escrcuturas correspondientes
     private JSONObject data;
 
     public ManejadorJson(Empresa empresa){
@@ -32,13 +32,18 @@ public class ManejadorJson
             //Read JSON file
             Object obj = jsonParser.parse(reader);
 
+            ///casteo de objeto plano a json object
             this.data = (JSONObject) obj;
 
+            ///del json object capta la imformacion desdeada para construir las debidas esctructuras(separacion del json object a los arrays)
             JSONArray allUsuarios = (JSONArray) this.data.get("usuarios");
             JSONArray allAviones = (JSONArray) this.data.get("aviones");
             JSONArray allReservas = (JSONArray) this.data.get("reservas");
 
+
             System.out.println("Reservas: " + allReservas);
+
+            /// se pasa de los arrays a la empresa
             empresa.inicializarUsuarios(allUsuarios);
             empresa.inicializarAviones(allAviones);
             empresa.inicializarReservas(allReservas);
@@ -56,6 +61,7 @@ public class ManejadorJson
 
     public void writeUser(Usuario newUser)
     {
+
         JSONObject newUserObject = new JSONObject();
         newUserObject.put("nombre", newUser.getNombre());
         newUserObject.put("apellido", newUser.getApellido());
@@ -99,9 +105,9 @@ public class ManejadorJson
         }
     }
 
+    ///sobrescribe el arrayReserva sin la reserva eliminada
+
     public void writeReservas(HashMap<Integer,Reserva> mapReservas){
-
-
 
         try (FileWriter file = new FileWriter("src/json/data.json")) {
 
