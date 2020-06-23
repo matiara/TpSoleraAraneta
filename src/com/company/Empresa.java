@@ -1,6 +1,5 @@
 package com.company;
 
-import clasesextra.Motor;
 import json.ManejadorJson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -171,9 +170,7 @@ public class Empresa {
     /// ELIMINAR RESERVA
     public void eliminarReserva(ManejadorJson manejador){
 
-        System.out.println("Ingrese su dni");
         int dniBuscado = buscarDni();
-        System.out.println("El DNI BUSCADO DA: " + dniBuscado);
 
             if(dniBuscado != 0 && verificarFecha(dniBuscado)){
 
@@ -269,6 +266,9 @@ public class Empresa {
 
 
 }
+
+
+
 
 
 
