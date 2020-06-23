@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.company.Empresa;
 import org.json.simple.JSONArray;
@@ -96,5 +97,37 @@ public class ManejadorJson
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void writeReservas(HashMap<Integer,Reserva> mapReservas){
+
+
+
+        try (FileWriter file = new FileWriter("src/json/data.json")) {
+
+            JSONArray currentReservas = (JSONArray) this.data.get("reservas");
+            currentReservas.clear();
+            for (Map.Entry<Integer, Reserva> r : mapReservas.entrySet()) {
+
+                JSONObject newReservaObject = new JSONObject();
+                newReservaObject.put("fecha" , r.getValue().getFecha());
+                newReservaObject.put("cantAcompañantes", r.getValue().getCantAcompañantes());
+                newReservaObject.put("selecAvion", r.getValue().getSelecAvion());
+                newReservaObject.put("costoTotal", r.getValue().getCostoTotal());
+                newReservaObject.put("origen", r.getValue().getOrigen().toString());
+                newReservaObject.put("destino", r.getValue().getDestino().toString());
+                newReservaObject.put("dni",r.getValue().getDni());
+                currentReservas.add(newReservaObject);
+
+            }
+            this.data.replace("reservas", currentReservas);
+            file.write(this.data.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
