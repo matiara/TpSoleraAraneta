@@ -26,6 +26,8 @@ public class Main {
             System.out.println("1 | Registrarse");
             System.out.println("2 | Iniciar Reserva") ;
             System.out.println("3 | Cancelar Reserva");
+            System.out.println("4 | Listar Vuelos");
+            System.out.println("5 | Mostrar Clientes");
 
             try {
 
@@ -49,7 +51,6 @@ public class Main {
                     ///CREANDO RESERVA
                     Reserva reserva = new Reserva();
 
-
                     ///BUSCAR DNI
                     int dniBuscado = empresa.buscarDni();
                     if (dniBuscado == 1){
@@ -61,14 +62,15 @@ public class Main {
                     }
 
                     reserva.corrarborrarDNI();
-
+                    clearScreen();
                     ///FECHA
                     reserva.indicarFecha();
-
+                    clearScreen();
                     /// ORIGEN - DESTINO
                     int origen = reserva.selecOrigen();
+                    clearScreen();
                     int destino = reserva.selecDestino();
-
+                    clearScreen();
                     if(origen == destino){
                         System.out.println("El destino y el origen no pueden ser iguales");
                         break;
@@ -77,6 +79,7 @@ public class Main {
                     /// CANTIDAD ACOMPAÑANTES.
                     reserva.putCantAcompañantes();
                     System.out.println("La cantidad de acompañantes es: " + reserva.getCantAcompañantes());
+                    clearScreen();
 
                     /// SELECCIONAR AVION.
                     empresa.mostrarAviones();
@@ -86,13 +89,12 @@ public class Main {
                         System.out.println("Este avion esta reservado");
                         break;
                     }
-
-
-
+                    clearScreen();
                     /// OBTENIENDO DISTANCIA.
                     System.out.println("Obteniendo distancia");
                     int distancia = reserva.obtenerDistancia();
                     System.out.println("" + distancia);
+                    clearScreen();
 
                     ///MOSTRANDO LOS DATOS DE LA RESERVA
                     int confirmar=0;
@@ -118,7 +120,6 @@ public class Main {
                             System.out.println("Acaba de cancelar la reserva");
                             check = 1;
                         }
-
                         if (confirmar <1 || confirmar > 2){
                             check = 0;
                             System.out.println("Valor incorrecto, vuelva a ingresar el valor");
@@ -126,28 +127,36 @@ public class Main {
                     }
 
                     salir = true;
+                    clearScreen();
                     break;
 
                     case 3:
-
-
+                        empresa.eliminarReserva();
+                        clearScreen();
                     break;
 
                     case 4:
-
-
-
-
+                        empresa.listarVuelos();
+                        clearScreen();
+                        break;
+                    case 5:
+                        empresa.mostrarClientes();
+                        clearScreen();
                         break;
 
                     default:
-                        System.out.println("Las opciones son 1,2 o 3");
+                        System.out.println("Las opciones son 1,2,3,4,5");
                         }
 
                 }catch(InputMismatchException ex) {
                     System.err.println("Debes introducir un numero");
                     salir = true;
             }
+        }
+    }
+    public static void clearScreen(){
+        for(int i=0; i < 80 * 300;i++){
+            System.out.println("\b");
         }
     }
 }

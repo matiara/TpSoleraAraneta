@@ -107,19 +107,9 @@ public class Reserva {
     //1) INDICAR LA FECHA PARA REALIZAR EL VUELO.
 
     public void indicarFecha(){ /// pisar valor en ultima funcion.
-/*
-        Date fecha = new Date();
-        System.out.println(fecha);
-        */
 
         Calendar c1 = GregorianCalendar.getInstance();
 
-        /*Calendar calendar = Calendar.getInstance();
-        calendar.set(2003, 8,7);
-        Date d = calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println(sdf.format(d));
-        */
         SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
         System.out.println("Fecha actual: " +fecha.format(c1.getTime()));
         System.out.println("Ingrese la fecha que quiere realizar el vuelo");
