@@ -65,7 +65,7 @@ public class Main {
                     clearScreen();
                     ///FECHA
                     reserva.indicarFecha();
-                    clearScreen();
+
                     /// ORIGEN - DESTINO
                     int origen = reserva.selecOrigen();
                     clearScreen();
