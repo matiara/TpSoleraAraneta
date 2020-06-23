@@ -1,14 +1,11 @@
 package reserva;
 
 import com.company.Avion;
-import com.company.Empresa;
 import com.company.Usuario;
-import interfaz.Catering;
-import java.text.DateFormat;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.spi.CalendarDataProvider;
 
 
 public class Reserva {
@@ -134,39 +131,43 @@ public class Reserva {
         while(check == 0){
             mostrarLugares();
             System.out.println("Ingrese el origen");
-            valorOrigen = reader.nextInt();
-            if (valorOrigen <1){
-                check =0;
-                System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+            Scanner reader = new Scanner(System.in);
+
+            try{
                 valorOrigen = reader.nextInt();
+                if (valorOrigen <1){
+                    check =0;
+                    System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+                    valorOrigen = reader.nextInt();
+                }
+
+                if(valorOrigen >=5){
+                    check =0;
+                    System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
+                    valorOrigen = reader.nextInt();
+                }
+
+                if(valorOrigen == 1){
+                    System.out.println("Lugar de origen: Buenos Aires");
+                    this.origen = Lugares.BuenoAires;
+                }
+                if(valorOrigen == 2){
+                    System.out.println("Lugar de origen: Cordoba");
+                    this.origen = Lugares.Cordoba;
+                }
+                if(valorOrigen == 3){
+                    System.out.println("Lugar de origen: Santiago de chile");
+                    this.origen = Lugares.Santiago;
+                }
+                if(valorOrigen == 4){
+                    System.out.println("Lugar de origen: Montevideo");
+                    this.origen = Lugares.Montevideo;
+                }
+            }
+            catch (InputMismatchException e){
+                System.out.println("Ingrese un valor correcto  ");
             }
 
-            if(valorOrigen >=5){
-                check =0;
-                System.out.println("ERROR, el valor ingresado es incorrecto, vuelva a intentarlo");
-                valorOrigen = reader.nextInt();
-            }
-
-            if(valorOrigen == 1){
-                System.out.println("Lugar de origen: Buenos Aires");
-                this.origen = Lugares.BuenoAires;
-            }
-            if(valorOrigen == 2){
-                System.out.println("Lugar de origen: Cordoba");
-                this.origen = Lugares.Cordoba;
-            }
-            if(valorOrigen == 3){
-                System.out.println("Lugar de origen: Santiago de chile");
-                this.origen = Lugares.Santiago;
-            }
-            if(valorOrigen == 4){
-                System.out.println("Lugar de origen: Montevideo");
-                this.origen = Lugares.Montevideo;
-            }
-
-            else {
-                check =1;
-            }
 
         }
         return valorOrigen;
@@ -413,4 +414,6 @@ public class Reserva {
     }
 
 }
+
+
 
