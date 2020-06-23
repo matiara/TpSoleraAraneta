@@ -85,8 +85,8 @@ public class Main {
                     empresa.mostrarAviones();
                     reserva.elegirAvion();
 
-                    if(empresa.verificarDisponibilidad(reserva)){
-                        System.out.println("Este avion esta reservado");
+                    if(empresa.verificarDisponibilidad(reserva) || empresa.compararPasajerosAvion(reserva)){
+                        System.out.println("Este avion esta reservado o excede la capacidad");
                         break;
                     }
                     clearScreen();
@@ -131,18 +131,19 @@ public class Main {
                     break;
 
                     case 3:
+                        clearScreen();
                         empresa.eliminarReserva(manejador);
-
                     break;
 
                     case 4:
-                        empresa.listarVuelos();
-
-                        break;
-                    case 5:
-                        empresa.mostrarClientes();
                         clearScreen();
-                        break;
+                        empresa.listarVuelos();
+                    break;
+
+                    case 5:
+                        clearScreen();
+                        empresa.mostrarClientes();
+                    break;
 
                     default:
                         System.out.println("Las opciones son 1,2,3,4,5");
@@ -160,4 +161,3 @@ public class Main {
         }
     }
 }
-
