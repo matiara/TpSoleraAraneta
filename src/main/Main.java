@@ -57,7 +57,7 @@ public class Main {
                         System.out.println("Por favor ingrese lo valores para realizar la reserva");
                     }
                     if(dniBuscado == 0){
-                        System.out.println("Usted no se encuentra registrado");
+                        System.out.println("Usted no se encuentra registrado o el valor ingresado no es correcto ");
                         break;
                     }
 
@@ -120,7 +120,7 @@ public class Main {
                             System.out.println("Acaba de cancelar la reserva");
                             check = 1;
                         }
-                        if (confirmar <1 || confirmar > 2){
+                        if (confirmar < 1 || confirmar > 2){
                             check = 0;
                             System.out.println("Valor incorrecto, vuelva a ingresar el valor");
                         }
@@ -131,13 +131,13 @@ public class Main {
                     break;
 
                     case 3:
-                        empresa.eliminarReserva();
-                        clearScreen();
+                        empresa.eliminarReserva(manejador);
+
                     break;
 
                     case 4:
                         empresa.listarVuelos();
-                        clearScreen();
+
                         break;
                     case 5:
                         empresa.mostrarClientes();
@@ -160,6 +160,4 @@ public class Main {
         }
     }
 }
-
-
 
