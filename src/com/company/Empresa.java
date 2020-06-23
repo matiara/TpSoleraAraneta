@@ -1,6 +1,6 @@
 package com.company;
 
-import com.sun.source.tree.BreakTree;
+import clasesextra.Motor;
 import json.ManejadorJson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -62,7 +62,7 @@ public class Empresa {
         for (int i = 0; i < allAviones.size(); i++) {
 
             JSONObject avion= (JSONObject) allAviones.get(i);
-            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()),Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString(),Integer.parseInt(avion.get("id").toString()),Integer.parseInt(avion.get("tarifa").toString()),avion.get("wifi").toString(),avion.get("catering").toString());
+            Avion t = new Avion(Float.parseFloat(avion.get("capCombustible").toString()),Float.parseFloat(avion.get("kmCosto").toString()),Integer.parseInt(avion.get("maxCapacidad").toString()),Float.parseFloat(avion.get("maxVelocidad").toString()), Motor.valueOf(avion.get("tipoPropulsion").toString()),avion.get("tipoAvion").toString(),Integer.parseInt(avion.get("id").toString()),Integer.parseInt(avion.get("tarifa").toString()),avion.get("wifi").toString(),avion.get("catering").toString());
             agregarAvion(t);
         }
     }
@@ -132,6 +132,8 @@ public class Empresa {
 
     }
 
+
+
     ///BUSCAR DNI
     public int buscarDni(){
         System.out.println("BUSCANDO DNI");
@@ -153,6 +155,17 @@ public class Empresa {
 
         return buscado;
     }
+    public boolean compararPasajerosAvion(Reserva reserva){
+        int pasajeros = reserva.getCantAcompañantes() + 1;
+
+        for(Avion a : listaAviones){
+            if(a.getId() == reserva.getSelecAvion() && pasajeros > a.getSizePasajeros()){
+                return true;
+            }
+        }
+        return false;
+
+    }
 
 
     /// ELIMINAR RESERVA
@@ -170,7 +183,9 @@ public class Empresa {
 
             }
             else{
-                System.out.println("La reserva no pudo ser cancelada");
+                System.out.println("La reserva no pudo ser cancelada, ya que el dni buscado no se encuentra en el sistema o la fecha coinicide con la actual.");
+                System.out.println("");
+
             }
 
     }
@@ -245,7 +260,7 @@ public class Empresa {
     }
 
     public void mostrarClientes(){
-        System.out.println("LOS VALORES DE LOS USUARIOS SON: ");
+        System.out.println(" LOS VALORES DE LOS USUARIOS SON: ");
         for (Map.Entry<Integer, Usuario> u : mapUsuarios.entrySet()) {
             System.out.println("" + u.getValue());
 
@@ -254,8 +269,6 @@ public class Empresa {
 
 
 }
-
-
 
 
 
